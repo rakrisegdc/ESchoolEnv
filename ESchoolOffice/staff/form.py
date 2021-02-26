@@ -3,16 +3,30 @@ import models
 
 
 class DesignationForm(forms.ModelForm):
-    desig_name = forms.CharField(label="Designation", max_length=100, required=True)
-
     class Meta:
         model = models.Designation
-        fields = ['desig_name']
+        fields = '__all__'
 
 
 class LeaveTypeForm(forms.ModelForm):
-    leave_type = forms.CharField(max_length=100, required=True)
-
     class Meta:
         model = models.Designation
-        fields = ['leave_type']
+        fields = '__all__'
+
+
+class StaffForm(forms.ModelForm):
+    class Meta:
+        model = models.Staff
+        fields = '__all__'
+
+
+class StaffLeaveForm(forms.ModelForm):
+    class Meta:
+        model = models.StaffLeave
+        fields = '__all__'
+
+
+class TeacherSubjectsForm(forms.ModelForm):
+    class Meta:
+        model = models.TeacherSubjects
+        fields = '__all__'
