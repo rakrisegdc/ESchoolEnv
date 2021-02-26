@@ -1,5 +1,5 @@
 from django.db import models
-from ..academic_settings.models import Subject
+from academic_settings.models import Subject
 
 
 class Designation(models.Model):
