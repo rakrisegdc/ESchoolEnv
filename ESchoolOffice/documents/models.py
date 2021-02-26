@@ -1,7 +1,6 @@
 from django.db import models
-from ESchoolOffice.student.models import Student
-from ESchoolOffice.staff.models import Staff
-
+from student.models import Student
+from staff.models import Staff
 
 
 class DocumentType(models.Model):

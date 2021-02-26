@@ -1,9 +1,8 @@
 from datetime import date
 
 from django.db import models
-from ESchoolOffice.student.models import Parent
-from ESchoolOffice.academic_settings.models import AcademicYear
-
+from student.models import Parent
+from academic_settings.models import AcademicYear
 
 class PTADesignation(models.Model):
     pta_designation_name = models.CharField(max_length=50)

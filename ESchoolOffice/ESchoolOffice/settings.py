@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'student',
     'user_settings',
     'pta',
-    'static_settings'
-    'documents'
+    'static_settings',
+    'documents',
 ]
 
 MIDDLEWARE = [
