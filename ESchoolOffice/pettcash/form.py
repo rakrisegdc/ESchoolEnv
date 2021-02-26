@@ -5,7 +5,7 @@ from .models import Pettycash, Pettycashapproval
 class PettycashForm(ModelForm):
     class Meta:
         model = Pettycash
-        fields = '__all__'
+        exclude = ['pettycash_status']
 
 
 class PettycashapprovalForm(ModelForm):
