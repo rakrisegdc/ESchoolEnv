@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'student',
     'user_settings',
     'pta',
+    'static_settings',
 ]
 
 MIDDLEWARE = [
