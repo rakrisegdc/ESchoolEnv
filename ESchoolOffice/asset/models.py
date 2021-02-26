@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 # Create your models here.
 
 
@@ -24,7 +25,7 @@ class Asset(models.Model):
 
 class AssetManagementIn(models.Model):
     merchant = models.ForeignKey(Merchant, on_delete=models.RESTRICT)
-    assetmgmtin_date = models.DateField()
+    assetmgmtin_date = models.DateField(default=date.today)
     assetmgmtin_billno = models.CharField(max_length=20, unique=True)
     assetmgmtin_billamount = models.IntegerField()
 
@@ -35,22 +36,24 @@ class AssetManagementIn(models.Model):
 
 class AssetManagementDetails(models.Model):
     assetmanagementin = models.ForeignKey(AssetManagementIn, on_delete=models.RESTRICT)
+    asset = models.ForeignKey(Asset, on_delete=models.RESTRICT)
     assetdet_qty = models.IntegerField()
     assetdet_unitrate = models.IntegerField()
 
     def __str__(self):
-        return "%s %s %s" % (
-            self.assetmanagementin, self.assetdet_qty, self.assetdet_unitrate)
+        return "%s %s %s %s" % (
+            self.assetmanagementin, self.asset, self.assetdet_qty, self.assetdet_unitrate)
 
 
 class AssetManagementOut(models.Model):
     asset = models.ForeignKey(Asset, on_delete=models.RESTRICT)
+    assetmgmtout_date = models.DateField(default=date.today)
     assetmgmtout_qty = models.IntegerField()
     assetmgmtout_particulars = models.CharField(max_length=1000)
 
     def __str__(self):
-        return "%s %s %s" % (
-            self.asset, self.assetmgmtout_qty, self.assetmgmtout_particulars)
+        return "%s %s %s %s" % (
+            self.asset, self.assetmgmtout_date, self.assetmgmtout_qty, self.assetmgmtout_particulars)
 
 
 class Stock(models.Model):

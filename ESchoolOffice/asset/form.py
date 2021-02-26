@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 
-from ESchoolOffice.asset.models import Stock, AssetManagementOut, AssetManagementDetails, AssetManagementIn, Asset, Merchant
+from ESchoolOffice.asset.models import Stock, AssetManagementOut, AssetManagementDetails, AssetManagementIn, Asset, \
+    Merchant
 
 
 class MerchantForm(ModelForm):
