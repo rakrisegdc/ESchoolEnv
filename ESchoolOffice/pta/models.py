@@ -1,12 +1,12 @@
 from datetime import date
 
 from django.db import models
-from ESchoolOffice.student.models import Parent
-from ESchoolOffice.academics.models import AcademicYear
+from student.models import Parent
+from academic_settings.models import AcademicYear
 
 
 class PTADesignation(models.Model):
-    pta_designation_name = models.Cha(50)
+    pta_designation_name = models.CharField()
 
     def __str__(self):
         return pta_designation_name
