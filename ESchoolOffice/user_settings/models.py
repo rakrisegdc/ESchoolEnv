@@ -8,8 +8,8 @@ class Religion(models.Model):
 
 
 class Cast(models.Model):
-    religion = models.ForeignKey(Religion, on_delete=models.CASCADE)
-    cast_name = models.CharField(max_length=30)
+    religion = models.ForeignKey(Religion, on_delete=models.RESTRICT)
+    cast_name = models.CharField(max_length=50)
 
     def __str__(self):
         return self.cast_name
