@@ -35,7 +35,7 @@ class AssetManagementDetails(Models.model):
         self.assetmanagementin, self.assetdet_qty, self.assetdet_unitrate)
 
 
-class AssetManagementDetails(Models.model):
+class AssetManagementOut(Models.model):
     asset = models.ForeignKey(Asset, on_delete=models.RESTRICT)
     assetmgmtout_qty = models.IntegerField()
     assetmgmtout_particulars = models.CharField()
