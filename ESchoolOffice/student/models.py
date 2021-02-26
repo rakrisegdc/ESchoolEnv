@@ -1,14 +1,14 @@
+from datetime import date
 from django.db import models
-from parent.models import Parent
 from django.utils import timezone
 from user_settings.models import Mothertongue, State, Relation
-from academic_Settings.models import Acyear, Standard, ExamMarks
+from academic_settings.models import AcademicYear, Standard, ExamMark,ClassDivision
 
 
 class Student(models.Model):
     stud_admno = models.CharField(max_length=15)
     standard = models.ForeignKey(Standard, on_delete=models.RESTRICT)
-    stud_regdate = models.DateField(default=timezone.now)
+    stud_regdate = models.DateField(default=date.today)
     stud_name = models.CharField(max_length=100)
     stud_address = models.CharField(max_length=300)
     state = models.ForeignKey(State, on_delete=models.RESTRICT)
@@ -19,7 +19,7 @@ class Student(models.Model):
     stud_nationality = models.CharField(max_length=30)
     mothertongue = models.ForeignKey(Mothertongue, on_delete=models.RESTRICT)
     stud_dob = models.DateField()
-    parent = models.ForeignKey(Parent, on_delete=models.RESTRICT)
+    stud_guardian = models.IntegerField()
     stud_bloodgroup = models.IntegerField()
     stud_gender = models.CharField(max_length=1)
 
@@ -30,7 +30,7 @@ class Student(models.Model):
 class StudentAcademic(models.Model):
     student = models.ForeignKey(Student, on_delete=models.RESTRICT)
     classdivision = models.ForeignKey(ClassDivision, on_delete=models.RESTRICT)
-    acyear = models.ForeignKey(AcYear, on_delete=models.RESTRICT())
+    academicyear = models.ForeignKey(AcademicYear, on_delete=models.RESTRICT)
 
     def __str__(self):
         return self.student
@@ -38,7 +38,7 @@ class StudentAcademic(models.Model):
 
 class StudentMarks(models.Model):
     student = models.ForeignKey(Student, on_delete=models.RESTRICT)
-    exammarks = models.ForeignKey(ExamMarks, on_delete= models.RESTRICT)
+    exammark = models.ForeignKey(ExamMark, on_delete= models.RESTRICT)
     studmark_obtained = models.IntegerField()
 
     def __str__(self):
