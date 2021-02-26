@@ -18,5 +18,5 @@ def staffleave(request):
     return HttpResponse("Staff Leave details")
 
 
-def TeacherSubject(request):
+def teachersubjects(request):
     return HttpResponse('Teacher Sub')
