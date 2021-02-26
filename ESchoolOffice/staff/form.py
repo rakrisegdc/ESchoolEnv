@@ -1,5 +1,5 @@
 from django import forms
-import models
+from . import models
 
 
 class DesignationForm(forms.ModelForm):
