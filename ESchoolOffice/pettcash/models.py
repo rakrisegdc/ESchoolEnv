@@ -17,9 +17,9 @@ class Pettycash(Models.model):
 class Pettycashapproval(Models.model):
     pettycash = models.ForeignKey(Pettycash, on_delete=models.RESTRICT)
     pettycashappr_date = models.DateField()
-    pettycashappr_voucherno = models.CharField(max_length=1000, default='')
-    pettycashappr_voucherfile = models.CharField(max_length=20, default='')
+    pettycashappr_voucherno = models.CharField(max_length=1000)
+    pettycashappr_voucherfile = models.CharField(max_length=20)
 
     def __str__(self):
         return "%s %s %s %s" % (
-        self.pettycash, self.pettycashappr_date, self.pettycash.pettycashappr_voucherno, self.pettycashappr_voucherfile)
+        self.pettycash, self.pettycashappr_date, self.pettycashappr_voucherno, self.pettycashappr_voucherfile)
