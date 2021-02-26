@@ -11,7 +11,7 @@ class Pettycash(models.Model):
 
     def __str__(self):
         return "%s %s %s %s" % (
-        self.staff, self.pettycash_date, self.pettycash.pettycash_particulars, self.pettycash_amount)
+            self.staff, self.pettycash_date, self.pettycash_particulars, self.pettycash_amount)
 
 
 class Pettycashapproval(models.Model):
@@ -22,4 +22,4 @@ class Pettycashapproval(models.Model):
 
     def __str__(self):
         return "%s %s %s %s" % (
-        self.pettycash, self.pettycashappr_date, self.pettycashappr_voucherno, self.pettycashappr_voucherfile)
+            self.pettycash, self.pettycashappr_date, self.pettycashappr_voucherno, self.pettycashappr_voucherfile)

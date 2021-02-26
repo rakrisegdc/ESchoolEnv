@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'pta',
     'static_settings',
     'documents',
+    'pettcash',
+    'asset',
 ]
 
 MIDDLEWARE = [
