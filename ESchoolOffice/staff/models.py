@@ -30,7 +30,7 @@ class Staff(models.Model):
 
     staff_name = models.CharField(max_length=100)
     staff_address = models.CharField(max_length=300)
-    staff_contactno = models.CharField(max_length=10)
+    staff_contactno = models.IntegerField()
     staff_email = models.CharField(max_length=100)
     staff_dob = models.DateField()
     staff_doj = models.DateField()
