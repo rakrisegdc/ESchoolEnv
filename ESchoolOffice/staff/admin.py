@@ -1,3 +1,9 @@
 from django.contrib import admin
+from .models import *
 
-# Register your models here.
+
+class DesignationAdmin(admin.ModelAdmin):
+    fields = [ 'desig_name' ]
+
+
+admin.site.register(Designation, DesignationAdmin)
