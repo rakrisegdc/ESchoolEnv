@@ -40,3 +40,22 @@ class Staff(models.Model):
 
     def __str__(self):
         return self.staff_name
+
+
+class StaffLeave(models.Model):
+    LEAVE_HALFDAY = (
+        (0, "Half day Leave"),
+        (1, "Full Day Leave")
+    )
+    LEAVE_STATUS=(
+        (0, "Pending"),
+        (1, "Accepted"),
+        (2, "Rejected")
+    )
+    staff_id = models.ForeignKey(Staff, on_delete=models.RESTRICT)
+    leave_from = models.DateFiield()
+    leave_to = models.DateFiield()
+    leave_hfday = models.IntegerField(max_length=1, choices=LEAVE_HALFDAY)
+    leave_reason = models.CharField(max_length=300)
+    leave_id = models.ForeignKey(LeaveType, on_delete=models.RESTRICT)
+    leave_status = models.IntegerField(max_length=1, choices=LEAVE_STATUS)
