@@ -18,8 +18,8 @@ class LeaveType(models.Model):
 class Staff(models.Model):
 
     STAFF_STATUS = (
-        ('T', 'T'),
-        ('N', 'N'),
+        ('T', 'Teaching Staff'),
+        ('N', 'Non-Teaching Staff'),
     )
 
     STAFF_ACTIVE = (
