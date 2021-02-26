@@ -8,3 +8,11 @@ class DesignationForm(forms.ModelForm):
     class Meta:
         model = models.Designation
         fields = ['desig_name']
+
+
+class LeaveTypeForm(forms.ModelForm):
+    leave_type = forms.CharField(max_length=100, required=True)
+
+    class Meta:
+        model = models.Designation
+        fields = ['leave_type']
