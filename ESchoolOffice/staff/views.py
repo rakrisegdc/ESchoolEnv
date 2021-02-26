@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from . import form
 
 
 def designation(request):
-    return HttpResponse('Designation')
+    forms = form.DesignationForm
+    return render(request, 'staff/designation.html', {'form' : forms})
 
 
 def leavetype(request):
