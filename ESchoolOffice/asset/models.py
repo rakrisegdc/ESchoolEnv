@@ -5,8 +5,8 @@ from django.db import models
 class Merchant(models.Model):
     mer_name = models.CharField(max_length=100)
     mer_address = models.CharField(max_length=300)
-    mer_contactno = models.CharField(max_length=13)
-    mer_email = models.CharField(max_length=30)
+    mer_contactno = models.CharField(max_length=13, unique=True)
+    mer_email = models.EmailField(max_length=30)
 
     def __str__(self):
         return "%s %s %s %s" % (
@@ -14,7 +14,7 @@ class Merchant(models.Model):
 
 
 class Asset(models.Model):
-    asset_name = models.CharField(max_length=1000)
+    asset_name = models.CharField(max_length=1000, unique=True)
     asset_description = models.CharField(max_length=1000)
 
     def __str__(self):
@@ -25,7 +25,7 @@ class Asset(models.Model):
 class AssetManagementIn(models.Model):
     merchant = models.ForeignKey(Merchant, on_delete=models.RESTRICT)
     assetmgmtin_date = models.DateField()
-    assetmgmtin_billno = models.CharField(max_length=20)
+    assetmgmtin_billno = models.CharField(max_length=20, unique=True)
     assetmgmtin_billamount = models.IntegerField()
 
     def __str__(self):
