@@ -46,7 +46,7 @@ class AssetManagementDetails(models.Model):
 class AssetManagementOut(models.Model):
     asset = models.ForeignKey(Asset, on_delete=models.RESTRICT)
     assetmgmtout_qty = models.IntegerField()
-    assetmgmtout_particulars = models.CharField()
+    assetmgmtout_particulars = models.CharField(max_length=1000)
 
     def __str__(self):
         return "%s %s %s" % (
