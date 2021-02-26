@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.db import models
 from ESchoolOffice.student.models import Parent
 from ESchoolOffice.academics.models import AcademicYear
@@ -11,8 +13,8 @@ class PTADesignation(models.Model):
 
 
 class CommitteeRegistration(models.Model):
-    academicyear = models.ForeignKey(AcademicYear, on_delete=models.CASCADE)
-    ptadesignation = models.ForeignKey(PTADesignation, on_delete=models.CASCADE)
+    academicyear = models.ForeignKey(AcademicYear, on_delete=models.PROTECT)
+    ptadesignation = models.ForeignKey(PTADesignation, on_delete=models.PROTECT)
     Parent = models.ForeignKey(Parent, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -20,8 +22,8 @@ class CommitteeRegistration(models.Model):
 
 
 class PTACommittee(models.Model):
-    comm_date = models.DateField()
-    committeeregistration = models.ForeignKey(CommitteeRegistration, on_delete=models.CASCADE)
+    comm_date = models.DateField(default=date.today)
+    committeeregistration = models.ForeignKey(CommitteeRegistration, on_delete=models.PROTECT)
     comm_agenda = models.CharField(300)
     comm_decision = models.CharField(2000)
 
@@ -31,7 +33,7 @@ class PTACommittee(models.Model):
 
 class PTAAttendedMembers(models.Model):
     ptacommittee = models.ForeignKey(PTACommittee, on_delete=models.CASCADE)
-    committeeregistration = models.ForeignKey(CommitteeRegistration, on_delete=models.CASCADE)
+    committeeregistration = models.ForeignKey(CommitteeRegistration, on_delete=models.PROTECT)
 
     def __str__(self):
         return ptacommittee

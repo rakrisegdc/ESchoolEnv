@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.db import models
 from parent.models import Parent
 from django.utils import timezone
@@ -8,7 +10,7 @@ from academic_Settings.models import Acyear, Standard, ExamMarks
 class Student(models.Model):
     stud_admno = models.CharField(max_length=15)
     standard = models.ForeignKey(Standard, on_delete=models.RESTRICT)
-    stud_regdate = models.DateField(default=timezone.now)
+    stud_regdate = models.DateField(default=date.today)
     stud_name = models.CharField(max_length=100)
     stud_address = models.CharField(max_length=300)
     state = models.ForeignKey(State, on_delete=models.RESTRICT)
