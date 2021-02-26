@@ -1,10 +1,9 @@
 from datetime import date
 
 from django.db import models
-from parent.models import Parent
 from django.utils import timezone
 from user_settings.models import Mothertongue, State, Relation
-from academic_Settings.models import Acyear, Standard, ExamMarks
+from academic_settings.models import Acyear, Standard, ExamMarks
 
 
 class Student(models.Model):
