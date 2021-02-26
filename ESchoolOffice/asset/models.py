@@ -4,7 +4,7 @@ from asset.models import Asset
 from assetmanagementin.models import AssetManagementIn
 
 # Create your models here.
-class Asset(Models.model):
+class Asset(models.Model):
     # staff = models.ForeignKey(Staff, on_delete=models.RESTRICT)
     asset_name = models.CharField(max_length=1000)
     asset_description = models.CharField(max_length=1000)
@@ -14,7 +14,7 @@ class Asset(Models.model):
         self.asset_name, self.asset_description)
 
 
-class AssetManagementIn(Models.model):
+class AssetManagementIn(models.Model):
     merchant = models.ForeignKey(Merchant, on_delete=models.RESTRICT)
     assetmgmtin_date = models.DateField()
     assetmgmtin_billno = models.CharField(max_length=20)
@@ -25,7 +25,7 @@ class AssetManagementIn(Models.model):
         self.merchant, self.assetmgmtin_date, self.assetmgmtin_billno, self.assetmgmtin_billamount)
 
 
-class AssetManagementDetails(Models.model):
+class AssetManagementDetails(models.Model):
     assetmanagementin = models.ForeignKey(AssetManagementIn, on_delete=models.RESTRICT)
     assetdet_qty = models.IntegerField()
     assetdet_unitrate = models.IntegerField()
@@ -35,7 +35,7 @@ class AssetManagementDetails(Models.model):
         self.assetmanagementin, self.assetdet_qty, self.assetdet_unitrate)
 
 
-class AssetManagementOut(Models.model):
+class AssetManagementOut(models.Model):
     asset = models.ForeignKey(Asset, on_delete=models.RESTRICT)
     assetmgmtout_qty = models.IntegerField()
     assetmgmtout_particulars = models.CharField()
@@ -45,7 +45,7 @@ class AssetManagementOut(Models.model):
         self.asset, self.assetmgmtout_qty, self.assetmgmtout_particulars)
 
 
-class Stock(Models.model):
+class Stock(models.Model):
     asset = models.ForeignKey(Asset, on_delete=models.RESTRICT)
     stock_qty = models.IntegerField()
 
@@ -54,7 +54,7 @@ class Stock(Models.model):
         self.asset, self.stock_qty)
 
 
-class Merchant(Models.model):
+class Merchant(models.Model):
     mer_name = models.CharField(max_length=100)
     mer_address = models.CharField(max_length=300)
     mer_contactno = models.CharField(max_length=13)
