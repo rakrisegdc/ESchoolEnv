@@ -27,9 +27,9 @@ class Staff(models.Model):
         (0, "In-Active"),
     )
 
-    staff_name = models.CharField(max_field=100)
-    staff_address = models.CharField(max_field=300)
-    staff_contactno = models.CharFiled(max_field=10)
+    staff_name = models.CharField(max_length=100)
+    staff_address = models.CharField(max_length=300)
+    staff_contactno = models.CharFiled(max_length=10)
     staff_email = models.CharFiled(max_length=100)
     staff_dob = models.DateFiield()
     staff_doj = models.DateFiield()
