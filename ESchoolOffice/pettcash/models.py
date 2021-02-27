@@ -8,8 +8,8 @@ class Pettycash(models.Model):
     staff = models.ForeignKey(Staff, on_delete=models.RESTRICT)
     pettycash_date = models.DateField(default=date.today)
     pettycash_particulars = models.CharField(max_length=1000)
-    pettycash_amount = models.IntegerField(max_length=20)
-    pettycash_status = models.IntegerField(max_length=1)
+    pettycash_amount = models.IntegerField()
+    pettycash_status = models.IntegerField()
 
     def __str__(self):
         return "%s %s %s %s %s" % (
