@@ -72,6 +72,28 @@
             </div>
     </div>
 </div>
+    <div class="container">
+    <div>
+        <table border="1">
+            <tr>
+                <th>Sl No</th>
+                <th>Asset Name</th>
+                <th>Asset Description</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            {% for obj in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{obj.asset_name}}</td>
+                <td>{{obj.asset_description}}</td>
+                <td><a href="{% url 'asset:edit_asset' pk=obj.id %}">Edit</a></td>
+                <td><a href="{% url 'asset:delete_asset' pk=obj.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    </div>
 </form>
 
 </body>
