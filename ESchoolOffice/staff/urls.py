@@ -1,8 +1,9 @@
-from django.conf.urls import url
 from django.urls import path
-from .views import *
+from django.conf.urls import url
+from . import views
 
+app_name='staff'
 
 urlpatterns = [
-    path('designation/', designation),
+    url(r'', views.designation, name="designation"),
 ]
