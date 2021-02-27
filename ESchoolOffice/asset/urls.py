@@ -7,5 +7,5 @@ urlpatterns = [
     url(r'/asset', asset, name='AssetForms'),
     url(r'edit_asset/(?P<pk>\d+)/$', edit_asset, name='edit_asset'),
     url(r'delete_asset/(?P<pk>\d+)/$', delete_asset, name='delete_asset'),
-    url(r'^$', merchant, name='MerchantForms'),
+    url(r'merchant', merchant, name='MerchantForms'),
 ]
