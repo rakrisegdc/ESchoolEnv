@@ -40,7 +40,7 @@ def delete_asset(request, pk):
 
 
 def edit_asset(request, pk):
-    template = "asset/asset.html"
+    template = "asset/Asset.html"
     post = get_object_or_404(Asset, pk=pk)
     model_object = Asset.objects.all()
     if request.method == 'POST':
@@ -56,4 +56,32 @@ def edit_asset(request, pk):
             'post': post,
             'data': model_object,
         }
+    return render(request, template, context)
+
+
+def delete_merchant(request, pk):
+    post = get_object_or_404(Merchant, pk=pk)
+    post.delete()
+    return redirect('asset:MerchantForms')
+
+
+def edit_merchant(request, pk):
+    template = "asset/Merchant.html"
+    post = get_object_or_404(Merchant, pk=pk)
+    model_object = Merchant.objects.all()
+    if request.method == 'POST':
+        form = forms.MerchantForms(request.POST, instance=post)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            return redirect('asset:MerchantForms')
+        print("if")
+    else:
+        form = forms.MerchantForms(instance=post)
+        context = {
+            'form': form,
+            'post': post,
+            'data': model_object,
+        }
+        print("else")
     return render(request, template, context)
