@@ -6,6 +6,11 @@ from academic_settings.models import AcademicYear, Standard, ExamMark,ClassDivis
 
 
 class Student(models.Model):
+    STUD_GENDER = (
+        ('M', 'Male'),
+        ('F', 'Female'),
+        ('O', 'Others')
+    )
     stud_admno = models.CharField(max_length=15)
     standard = models.ForeignKey(Standard, on_delete=models.RESTRICT)
     stud_regdate = models.DateField(default=date.today)
@@ -21,7 +26,7 @@ class Student(models.Model):
     stud_dob = models.DateField()
     stud_guardian = models.IntegerField()
     stud_bloodgroup = models.IntegerField()
-    stud_gender = models.CharField(max_length=1)
+    stud_gender = models.CharField(choices=STUD_GENDER, max_length=1)
 
     def __str__(self):
         return self.stud_admno

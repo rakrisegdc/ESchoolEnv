@@ -6,6 +6,6 @@ app_name = 'student'
 
 urlpatterns = [
     url(r'^$', index, name='IndexForm'),
-    url(r'^/studentregistration/$', studentregistration, name='StudentRegistration'),
+    url(r'^studentregistration/$', studentregistration, name='StudentRegistration'),
 
     ]

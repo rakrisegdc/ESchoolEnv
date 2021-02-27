@@ -8,6 +8,8 @@ class StudentForm(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'stud_address': forms.Textarea(attrs={'cols': 40, 'rows': 4}),
+            'stud_gender': forms.RadioSelect(choices=model.STUD_GENDER),
+
         }
 
 
