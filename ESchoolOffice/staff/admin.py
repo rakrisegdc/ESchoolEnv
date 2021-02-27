@@ -11,7 +11,7 @@ class LeaveTypeAdmin(admin.ModelAdmin):
 
 
 class StaffAdmin(admin.ModelAdmin):
-    fieldsets= [
+    fieldsets = [
         ('Staff Details', { 'fields' : ['staff_name',
                                         'staff_address',
                                         'staff_contactno',
@@ -26,6 +26,11 @@ class StaffAdmin(admin.ModelAdmin):
     ]
 
 
+class TeacherSubjectAdmin(admin.ModelAdmin):
+    fields = ['subject_id', 'teacher_id']
+
+
 admin.site.register(Designation, DesignationAdmin)
 admin.site.register(LeaveType, LeaveTypeAdmin)
 admin.site.register(Staff, StaffAdmin)
+admin.site.register(TeacherSubjects, TeacherSubjectAdmin)
