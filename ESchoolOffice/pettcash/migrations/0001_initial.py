@@ -30,7 +30,9 @@ class Migration(migrations.Migration):
                 ('pettycashappr_date', models.DateField()),
                 ('pettycashappr_voucherno', models.CharField(max_length=1000)),
                 ('pettycashappr_voucherfile', models.CharField(max_length=20)),
-                ('pettycash', models.ForeignKey(on_delete=django.db.models.deletion.RESTRICT, to='Pettcash.pettycash')),
+                ('pettycash', models.ForeignKey(on_delete=django.db.models.deletion.RESTRICT, to='pettcash.pettycash')),
+
+
             ],
         ),
     ]

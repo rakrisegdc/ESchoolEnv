@@ -16,17 +16,14 @@ class LeaveType(models.Model):
 
 
 class Staff(models.Model):
-
     STAFF_STATUS = (
         ('T', 'Teaching Staff'),
         ('N', 'Non-Teaching Staff'),
     )
-
     STAFF_ACTIVE = (
         (1, "Active"),
         (0, "In-Active"),
     )
-
     staff_name = models.CharField(max_length=100)
     staff_address = models.CharField(max_length=300)
     staff_contactno = models.CharField(max_length=10)
