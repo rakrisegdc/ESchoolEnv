@@ -62,3 +62,4 @@ class StaffLeave(models.Model):
 class TeacherSubjects(models.Model):
     subject_id = models.ForeignKey(Subject, on_delete=models.RESTRICT)
     teacher_id = models.ForeignKey(Staff, on_delete=models.RESTRICT)
+
