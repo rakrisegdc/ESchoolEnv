@@ -24,4 +24,5 @@ def staffleave(request):
 
 
 def teachersubjects(request):
-    return HttpResponse('Teacher Sub')
+    forms = form.TeacherSubjectsForm
+    return render(request, 'staff/teachersubjects.html', {'form': forms})
