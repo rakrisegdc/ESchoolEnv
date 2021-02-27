@@ -3,6 +3,10 @@ from . import forms
 from .models import Asset, Merchant
 
 
+def index(request):
+    return render(request, 'asset/index.html')
+
+
 def asset(request):
     model_object = Asset.objects.all()
     if request.method == 'POST':
@@ -13,7 +17,7 @@ def asset(request):
             return redirect("asset:AssetForms")
     else:
         form = forms.AssetForms()
-    return render(request, 'asset/Asset.html', {'form': form, 'data': model_object})
+    return render(request, 'asset/asset.html', {'form': form, 'data': model_object})
 
 
 def merchant(request):
