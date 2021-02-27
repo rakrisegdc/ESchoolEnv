@@ -32,8 +32,8 @@ class Staff(models.Model):
     staff_doj = models.DateField()
     staff_status = models.CharField(max_length=1, choices=STAFF_STATUS)
     desig_id = models.ForeignKey(Designation, on_delete=models.RESTRICT)
-    staff_adharno = models.IntegerField(max_length=12)
-    staff_active = models.IntegerField(max_length=1, choices=STAFF_ACTIVE)
+    staff_adharno = models.IntegerField()
+    staff_active = models.IntegerField(choices=STAFF_ACTIVE)
 
     def __str__(self):
         return self.staff_name
@@ -52,7 +52,7 @@ class StaffLeave(models.Model):
     staff_id = models.ForeignKey(Staff, on_delete=models.RESTRICT)
     leave_from = models.DateField()
     leave_to = models.DateField()
-    leave_hfday = models.IntegerField(max_length=1, choices=LEAVE_HALFDAY)
+    leave_hfday = models.IntegerField(choices=LEAVE_HALFDAY)
     leave_reason = models.CharField(max_length=300)
     leave_id = models.ForeignKey(LeaveType, on_delete=models.RESTRICT)
-    leave_status = models.IntegerField(max_length=1, choices=LEAVE_STATUS)
+    leave_status = models.IntegerField(choices=LEAVE_STATUS)
