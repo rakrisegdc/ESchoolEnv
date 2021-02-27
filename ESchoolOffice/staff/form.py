@@ -10,7 +10,7 @@ class DesignationForm(forms.ModelForm):
 
 class LeaveTypeForm(forms.ModelForm):
     class Meta:
-        model = models.Designation
+        model = models.LeaveType
         fields = '__all__'
 
 
