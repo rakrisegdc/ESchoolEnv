@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from . import forms
-from .models import Asset
+from .models import Asset, Merchant
 
 
 def asset(request):
@@ -14,6 +14,19 @@ def asset(request):
     else:
         form = forms.AssetForms()
     return render(request, 'asset/Asset.html', {'form': form, 'data': model_object})
+
+
+def merchant(request):
+    model_object = Merchant.objects.all()
+    if request.method == 'POST':
+        form = forms.MerchantForms(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            return redirect("asset:MerchantForms")
+    else:
+        form = forms.MerchantForms()
+    return render(request, 'asset/Merchant.html', {'form': form, 'data': model_object})
 
 
 def delete_asset(request, pk):
