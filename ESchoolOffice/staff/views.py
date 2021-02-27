@@ -5,11 +5,12 @@ from . import form
 
 def designation(request):
     forms = form.DesignationForm
-    return render(request, 'staff/designation.html', {'form' : forms})
+    return render(request, 'staff/designation.html', {'form': forms})
 
 
 def leavetype(request):
-    return HttpResponse('Leave Type')
+    forms = form.LeaveTypeForm
+    return render(request, 'staff/leavetype.html', {'form': forms})
 
 
 def staff(request):
