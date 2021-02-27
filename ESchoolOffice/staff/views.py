@@ -14,7 +14,8 @@ def leavetype(request):
 
 
 def staff(request):
-    return HttpResponse("Staff details")
+    forms = form.StaffForm
+    return render(request, 'staff/staff.html', {'form': forms})
 
 
 def staffleave(request):
