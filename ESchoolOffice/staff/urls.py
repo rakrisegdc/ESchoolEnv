@@ -5,7 +5,8 @@ from . import views
 app_name = 'staff'
 
 urlpatterns = [
-    url(r'designation/', views.designation, name="designation"),
-    url(r'leavetype/', views.leavetype, name="leaveType"),
-    url(r'', views.staff, name="staffDetails"),
+    url(r'^staffdetails/$', views.staff, name="staffDetails"),
+    url(r'^designation/$', views.designation, name="designation"),
+    url(r'^leavetype/$', views.leavetype, name="leaveType"),
+    url(r'^staffleave/$', views.staffleave, name="staffLeave"),
 ]

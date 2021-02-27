@@ -15,11 +15,12 @@ def leavetype(request):
 
 def staff(request):
     forms = form.StaffForm
-    return render(request, 'staff/staff.html', {'form': forms})
+    return render(request, 'staff/staffdetails.html', {'form': forms})
 
 
 def staffleave(request):
-    return HttpResponse("Staff Leave details")
+    forms = form.StaffLeaveForm
+    return render(request, 'staff/staffleave.html', {'form': forms})
 
 
 def teachersubjects(request):
