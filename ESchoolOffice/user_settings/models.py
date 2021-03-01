@@ -7,12 +7,12 @@ class Religion(models.Model):
         return self.religion_name
 
 
-class Cast(models.Model):
-    religion = models.ForeignKey(Religion, on_delete=models.CASCADE)
-    cast_name = models.CharField(max_length=30)
+class Caste(models.Model):
+    religion = models.ForeignKey(Religion, on_delete=models.RESTRICT)
+    caste_name = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.cast_name
+        return self.caste_name
 
 
 class State(models.Model):
