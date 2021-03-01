@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import *
 
-# Register your models here.
+class StandardAdmin(admin.ModelAdmin):
+    fields = ['standard_name']
+
+admin.site.register(Standard, StandardAdmin)

@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'staff/', include('staff.urls')),
     path('pta/', include('pta.urls')),
     url(r'^asset/', include('asset.urls')),
+    url(r'student/', include('student.urls')),
 ]
