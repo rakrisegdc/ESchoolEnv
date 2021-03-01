@@ -10,27 +10,30 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body id="top">
-
+<form method="post">
+ {% csrf_token %}
 <div class="container">
   <h2>Religion</h2>
 
   <div class="row">
    <div class="col-md-12">
             <div class="card table-bordered">
-                <div class="card-header">
+
+                    <div class="card-header">
                     Create New Religion
                 </div>
                 <div class="card-body">
+
                     <div class="row card-body2">
 
                         <div class="col-md-1">
                         </div>
 
                         <div class="col-md-3 text-right">
-                           Religion Name: 
+                           Religion Name:
                         </div>
                         <div class="col-md-6 bg-warning">
-                        vdf
+                            {{ form.religion_name }}
                         </div>
                     </div>
 
@@ -38,12 +41,12 @@
                         <div class="col-md-4 card-body2">
                         </div>
                         <div class="col-md-4">
-                        
+
                         <button class="btn btn-primary btn-btn">
                             Reset
                         </button>
                         </div>
-                        
+
                         <div class="col-md-4">
                         <button class="btn btn-success btn-btn">
                             Save
@@ -54,13 +57,125 @@
                     </div>
 
 
+
                     </div>
+
                 </div>
             </div>
     </div>
 </div>
-</div>
+       <div class="container">
+    <div>
+        <table border="1">
+            <tr>
+                <th>Sl No</th>
+                <th>Religion Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            {% for obj in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{obj.religion_name}}</td>
+                <td><a href="{% url 'user_settings:edit_religion' pk=obj.id %}">Edit</a></td>
+                <td><a href="{% url 'user_settings:delete_religion' pk=obj.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    </div>
+</form>
 
+<form method="post">
+ {% csrf_token %}
+<div class="container">
+  <h2>Caste</h2>
+
+  <div class="row">
+   <div class="col-md-12">
+            <div class="card table-bordered">
+
+                    <div class="card-header">
+                    Create New Caste
+                </div>
+                <div class="card-body">
+
+                    <div class="row card-body2">
+
+                        <div class="col-md-1">
+                        </div>
+
+                        <div class="col-md-3 text-right">
+                           Religion:
+                        </div>
+                        <div class="col-md-6 bg-warning">
+                            {{ form1.religion }}
+                        </div>
+                    </div>
+
+                    <div class="row card-body2">
+
+                        <div class="col-md-1">
+                        </div>
+
+                        <div class="col-md-3 text-right">
+                           Caste Name:
+                        </div>
+                        <div class="col-md-6 bg-warning">
+                            {{ form1.caste_name }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 card-body2">
+                        </div>
+                        <div class="col-md-4">
+
+                        <button class="btn btn-primary btn-btn">
+                            Reset
+                        </button>
+                        </div>
+
+                        <div class="col-md-4">
+                        <button class="btn btn-success btn-btn">
+                            Save
+                        </button>
+                        </div>
+
+
+                    </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+    </div>
+</div>
+       <div class="container">
+    <div>
+        <table border="1">
+            <tr>
+                <th>Sl No</th>
+                <th>Religion</th>
+                <th>Caste</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            {% for obj in data1 %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{obj.religion}}</td>
+                <td>{{obj.caste_name}}</td>
+                <td><a href="{% url 'user_settings:edit_caste' pk=obj.id %}">Edit</a></td>
+                <td><a href="{% url 'user_settings:delete_caste' pk=obj.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    </div>
+</form>
 
 </body>
 </html>
