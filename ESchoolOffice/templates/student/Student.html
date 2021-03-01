@@ -10,8 +10,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body id="top">
-
-	<div class="container">
+<form method="post">
+    {% csrf_token %}
+    	<div class="container">
   <h2>Student</h2>
 
   <div class="row">
@@ -23,36 +24,35 @@
                 </div>
                 <div class="card-body">
                     <div class="row card-body2">
-                    	
+
                         <div class="col-md-2 text-right col-formargin">
-                            Admission No.: 
+                            Admission No.:
                         </div>
 
                         <div class="col-md-4 bg-warning">
-                        
+                            {{form.stud_admno}}
                         </div>
                     </div>
 
                     <div class="row card-body2">
 
                         <div class="col-md-2 text-right col-formargin">
-                            Registration Date: 
+                            Registration Date:
                         </div>
 
                         <div class="col-md-4 bg-warning">
-                        ww
+                         {{form.stud_regdate}}
                         </div>
                     </div>
 
                     <div class="row card-body2">
-                        
 
                         <div class="col-md-2 text-right col-formargin">
-                            Name: 
+                            Name:
                         </div>
 
                         <div class="col-md-4 bg-warning">
-                        ww
+                        {{form.stud_name}}
                         </div>
 
                         <div class="col-md-2 text-right">
@@ -60,137 +60,139 @@
                         </div>
 
                         <div class="col-md-3 bg-warning">
-                        ww
+                        {{form.stud_gender}}
                         </div>
                     </div>
-                    
+
                     <div class="row card-body2">
                         <div class="col-md-2 text-right col-formargin">
-                            Address: 
+                            Address:
                         </div>
 
                         <div class="col-md-4 bg-warning">
-                        ww
+                        {{form.stud_address}}
                         </div>
 
                         <div class="col-md-2 text-right">
-                            Date of Birth: 
+                            Date of Birth:
                         </div>
 
                          <div class="col-md-3 bg-warning">
-                        ww
+                        {{form.stud_dob}}
                         </div>
                     </div>
 
                     <div class="row card-body2">
                         <div class="col-md-2 text-right col-formargin">
-                            Email: 
+                            Email:
                         </div>
 
                         <div class="col-md-4 bg-warning">
-                        ww
+                        {{form.stud_email}}
                         </div>
 
                         <div class="col-md-2 text-right">
-                            Blood Group: 
+                            Blood Group:
                         </div>
 
                         <div class="col-md-3 bg-warning">
-                        ss
+                        {{form.stud_bloodgroup}}
                         </div>
                     </div>
 
                     <div class="row card-body2">
 
                         <div class="col-md-2 text-right col-formargin">
-                            Aadhaar No.: 
+                            Aadhaar No.:
                         </div>
 
                         <div class="col-md-4 bg-warning">
-                        ww
+                        {{form.stud_adharno}}
                         </div>
                     </div>
 
                     <div class="row card-body2">
                         <div class="col-md-2 text-right col-formargin">
-                            Religion: 
+                            Religion:
                         </div>
 
                         <div class="col-md-4 bg-warning ">
-                        ww
+                        {{form.religion}}
                         </div>
 
                         <div class="col-md-2 text-right">
-                            Caste: 
+                            Caste:
                         </div>
 
                         <div class="col-md-3 bg-warning">
-                        ww
+                        {{form.caste}}
                         </div>
                     </div>
 
                     <div class="row card-body2">
                         <div class="col-md-2 text-right col-formargin">
-                            Which class admission is taken: 
+                            Which class admission is taken:
                         </div>
 
                         <div class="col-md-4 bg-warning">
-                        ww
+                        {{form.standard}}
                         </div>
 
                         <div class="col-md-2 text-right">
-                             
+
                         </div>
 
                         <div class="col-md-3 bg-warning">
-                        
+
                         </div>
                     </div>
 
                     <div class="row card-body2">
                         <div class="col-md-2 text-right col-formargin">
-                            Nationality: 
+                            Nationality:
                         </div>
 
                         <div class="col-md-4 bg-warning">
-                        ww
-                        </div>   
+                        {{form.stud_nationality}}
+                        </div>
                     </div>
 
                     <div class="row card-body2">
                         <div class="col-md-2 text-right col-formargin">
-                            State: 
+                            State:
                         </div>
 
                         <div class="col-md-4 bg-warning">
-                        ww
-                        </div>   
-                    </div>   
+                        {{form.state}}
+                        </div>
+                    </div>
 
                      <div class="row card-body2">
                         <div class="col-md-2 text-right col-formargin">
-                            Mother tongue: 
+                            Mother tongue:
                         </div>
 
                         <div class="col-md-4 bg-warning">
-                        ww
-                        </div>   
+                        {{form.mothertongue}}
+                        </div>
                     </div>
 
                      <div class="row btn-div">
                         <div class="col-md-4 card-body2">
                         </div>
                         <div class="col-md-4">
-                        
+
                         <button class="btn btn-primary btn-btn">
                             Reset
                         </button>
                         </div>
-                        
+                    {{ form.errors }}
+                    {{ form.non_field_errors }}
                         <div class="col-md-4">
-                        <button class="btn btn-success btn-btn btn-save" onclick="return confirm('Are you sure you want to save this Staff Registration');">
-                            Save
-                        </button>
+<!--                        <button class="btn btn-success btn-btn btn-save" onclick="return confirm('Are you sure you want to save this Staff Registration');">-->
+<!--                            Save-->
+<!--                        </button>-->
+                            <input type="submit" value="Submit"/>
                         </div>
 
                     </div>
@@ -199,6 +201,8 @@
 
    </div>
 </div>
+</form>
+
 
 
 </body>

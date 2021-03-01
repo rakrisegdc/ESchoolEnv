@@ -6,6 +6,21 @@ from academic_settings.models import AcademicYear, Standard, ExamMark,ClassDivis
 
 
 class Student(models.Model):
+    STUD_GENDER = (
+        ('M', 'Male'),
+        ('F', 'Female'),
+        ('O', 'Others')
+    )
+    BLOOD_GROUP = (
+        (1, 'A+'),
+        (2, 'A-'),
+        (3, 'B+'),
+        (4, 'B-'),
+        (5, 'O+'),
+        (6,'O-'),
+        (7, 'AB+'),
+        (8, 'AB-'),
+    )
     stud_admno = models.CharField(max_length=15)
     standard = models.ForeignKey(Standard, on_delete=models.RESTRICT)
     stud_regdate = models.DateField(default=date.today)
@@ -14,18 +29,19 @@ class Student(models.Model):
     state = models.ForeignKey(State, on_delete=models.RESTRICT)
     stud_email = models.EmailField(max_length=30)
     stud_adharno = models.CharField(max_length=12)
-    religion = models.ForeignKey(Religion, on_delete=models.RESTRICT, default=0)
-    caste = models.ForeignKey(Caste, on_delete=models.RESTRICT, default=0)
+    religion = models.ForeignKey(Religion, on_delete=models.RESTRICT, default=None)
+    caste = models.ForeignKey(Caste, on_delete=models.RESTRICT,  default=None)
     stud_nationality = models.CharField(max_length=30)
     mothertongue = models.ForeignKey(Mothertongue, on_delete=models.RESTRICT)
-    stud_dob = models.DateField()
-    stud_guardian = models.IntegerField()
-    stud_bloodgroup = models.IntegerField()
-    stud_gender = models.CharField(max_length=1)
+    stud_dob = models.DateField(default=date.today)
+    stud_guardian = models.IntegerField(blank=True, null=True)
+    stud_bloodgroup = models.IntegerField(choices=BLOOD_GROUP, default=None)
+    stud_gender = models.CharField(choices=STUD_GENDER, max_length=1, default=None)
+
 
     def __str__(self):
         return self.stud_admno
-
+        # return "%s %s" % (self.stud_admno, str(self.standard))
 
 class StudentAcademic(models.Model):
     student = models.ForeignKey(Student, on_delete=models.RESTRICT)
