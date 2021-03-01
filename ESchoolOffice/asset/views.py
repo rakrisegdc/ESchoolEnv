@@ -6,11 +6,13 @@ from .models import Asset, Merchant
 from django.views.generic.edit import DeleteView
 
 
+# index page
+
 def index(request):
     return render(request, 'asset/index.html')
 
 
-# index page
+# asset create function
 
 
 def asset(request):
@@ -26,7 +28,7 @@ def asset(request):
     return render(request, 'asset/asset.html', {'form': form, 'data': model_object})
 
 
-# asset create function
+# merchant create function
 
 
 def merchant(request):
@@ -42,7 +44,7 @@ def merchant(request):
     return render(request, 'asset/Merchant.html', {'form': form, 'data': model_object})
 
 
-# merchant create function
+# asset delete function
 
 
 def delete_asset(request, pk):
@@ -74,7 +76,7 @@ def edit_asset(request, pk):
     return render(request, template, context)
 
 
-# asset delete function
+# merchant delete function
 
 
 def merchant_delete(request, pk):
@@ -83,7 +85,7 @@ def merchant_delete(request, pk):
     return redirect('asset:MerchantForms')
 
 
-# merchant delete function
+# merchant edit function
 
 
 def merchant_edit(request, pk):
@@ -104,16 +106,23 @@ def merchant_edit(request, pk):
             'data': model_object,
         }
     return render(request, template, context)
-# merchant edit function
+
+
+# Asset edit function
 
 
 class AssetView(generic.DetailView):
     model = Asset
     template_name = 'asset/AssetView.html'
-# Asset edit function
 
+
+# Merchant edit function
 
 class MerchantView(generic.DetailView):
     model = Merchant
     template_name = 'asset/MerchantView.html'
-# Merchant edit function
+
+
+
+
+
