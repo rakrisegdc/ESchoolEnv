@@ -8,6 +8,3 @@ admin.site.register(Division)
 admin.site.register(AcademicYear)
 admin.site.register(ExamDetail)
 admin.site.register(Grade)
-
-
-
