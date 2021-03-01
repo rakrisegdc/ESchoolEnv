@@ -81,6 +81,7 @@
                 <th>Asset Description</th>
                 <th>Edit</th>
                 <th>Delete</th>
+                <th>View</th>
             </tr>
             {% for obj in data %}
             <tr>
@@ -89,6 +90,7 @@
                 <td>{{obj.asset_description}}</td>
                 <td><a href="{% url 'asset:edit_asset' pk=obj.id %}">Edit</a></td>
                 <td><a href="{% url 'asset:delete_asset' pk=obj.id %}">Delete</a></td>
+                <td><a href="/asset/asset_detail/{{ obj.id }}/">View </a></td>
             </tr>
             {% endfor %}
         </table>

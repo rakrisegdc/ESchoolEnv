@@ -41,6 +41,7 @@ class AssetManagementDetails(models.Model):
     assetdet_unitrate = models.IntegerField()
     assetdet_unit = models.CharField(max_length=10, default='')
 
+
     def __str__(self):
         return "%s %s %s %s %s" % (
             self.assetmanagementin, self.asset, self.assetdet_qty, self.assetdet_unitrate,self.assetdet_unit)
