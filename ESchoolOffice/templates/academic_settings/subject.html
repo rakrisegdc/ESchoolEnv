@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 <html lang="">
+
 <head>
 <title>Subject</title>
 <meta charset="utf-8">
@@ -8,8 +10,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body id="top">
-
-
+<h1>Subjects</h1>
 
 <form action="" method="post">
     {% csrf_token %}
@@ -17,7 +18,28 @@
     <input type="submit" value="Submit">
 </form>
 
-
+<table border="1">
+    <thead>
+        <th>Slno</th>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </thead>
+    <tbody>
+    {% for subject in object_list %}
+        <tr>
+            <td></td>
+            <td>{{ subject.sub_name }}</td>
+            <td><a href=""></a></td>
+            <td></td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="2">No Subjects Found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
 
 </body>
 </html>

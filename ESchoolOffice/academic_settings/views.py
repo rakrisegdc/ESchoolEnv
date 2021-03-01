@@ -1,56 +1,58 @@
 from django.shortcuts import render
 from .models import Subject, Standard, AcademicYear
-from .import forms
+from .forms import *
 from django.views import generic
 from django.http import HttpResponseRedirect
-
 # Create your views here.
 
-# Create your views here.
-class IndexView(generic.ListView):
+class SubjectListView(generic.ListView,generic.FormView):
     model = Subject
-    context_object_name = 'subject_list'
-    template_name = 'academic_settings/Index_Subject.html'
+    template_name = 'academic_settings/subject.html'
+    form_class = SubjectForm
+    #paginate_by = 5  # if pagination is desired
 
-    def get_queryset(self):
-        return Subject.objects.all()
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
-
-def addsubject(request):
-    form = forms.SubjectForm(request.POST or None)
-    if form.is_valid():
+    def form_valid(self, form):
         form.save()
-        return render(request, 'academic_settings/Index_Subject.html')
-    context = {'form': form}
-    return render(request, 'academic_settings/Add_Subject.html', context)
+        return HttpResponseRedirect('subjects')
 
-def indexsubjects(request):
-    subjects = Subject.objects.all()
-    return render(request, 'academic_settings/Index_Subject.html')
+# class SubjectAddForm(generic.FormView):
+#     model = Subject
+#     template_name = 'academic_settings/Add_Subject.html'
+#     form_class = SubjectForm
+#
+#     def form_valid(self, form):
+#         form.save()
+#         return HttpResponseRedirect('subjects')
+
+# class SubjectEditForm(generic.FormView):
+#     module = Subject
 
 
+class StandardListView(generic.ListView,generic.FormView):
+    model = Standard
+    template_name = 'academic_settings/standard.html'
+    form_class = StandardForm
 
-def addacyear(request):
-    form = forms.AcademicYearForm(request.POST or None)
-    if form.is_valid():
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+    def form_valid(self, form):
         form.save()
-        return render(request, 'academic_settings/Index_AcademicYear.html')
-    context = {'form': form}
-    return render(request, 'academic_settings/Add_AcademicYear.html', context)
-
-def indexacyear(request):
-    addacyear = AcademicYear.objects.all()
-    return render(request, 'academic_settings/Index_Subject.html')
+        return HttpResponseRedirect('standards')
 
 
-def addstandard(request):
-    form = forms.StandardForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return render(request, 'academic_settings/Index_Subject.html')
-    context = {'form': form}
-    return render(request, 'academic_settings/Add_Standard.html', context)
 
-def indexstandard(request):
-    standard = Standard.objects.all()
-    return render(request, 'academic_settings/Index_Standard.html')
+# class StandardAddForm(generic.FormView):
+#     model = Standard
+#     template_name = 'academic_settings/Add_Standard.html'
+#     form_class = StandardForm
+#
+#     def form_valid(self, form):
+#         form.save()
+#         return HttpResponseRedirect('standards')
+
