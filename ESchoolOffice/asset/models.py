@@ -31,8 +31,7 @@ class AssetManagementIn(models.Model):
     assetmgmtin_billamount = models.IntegerField()
 
     def __str__(self):
-        return "%s %s %s %s" % (
-            self.merchant, self.assetmgmtin_date, self.assetmgmtin_billno, self.assetmgmtin_billamount)
+        return self.assetmgmtin_billno
 
 
 class AssetManagementDetails(models.Model):

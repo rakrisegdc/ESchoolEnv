@@ -16,4 +16,5 @@ urlpatterns = [
     path('asset_detail/<int:pk>/', views.AssetView.as_view(), name='asset_detail'),
     path('merchant_detail/<int:pk>/', views.MerchantView.as_view(), name='merchant_detail'),
     url(r'/in_asset', asset_in, name='AssetManagementInForms'),
+    url(r'details_asset', asset_in, name='AssetManagementDetailsForms'),
 ]

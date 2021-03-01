@@ -53,7 +53,7 @@ def asset_in(request):
         if form.is_valid():
             instance = form.save(commit=False)
             instance.save()
-            return redirect("asset:AssetManagementInForms")
+            return redirect("asset:AssetManagementDetailsForms")
     else:
         form = forms.AssetManagementInForms()
     return render(request, 'asset/AssetManagementIn.html', {'form': form, 'data': model_object})
