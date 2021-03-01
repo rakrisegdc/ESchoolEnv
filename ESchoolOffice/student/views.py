@@ -3,6 +3,7 @@ from .import forms
 from .models import Student
 
 
+
 def index(request):
     return render(request, 'student/index.html')
 
