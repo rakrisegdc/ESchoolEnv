@@ -11,16 +11,16 @@
 <div class="row mt-4" >
     <div class="col-md-1"></div>
     <div class="col-md-5">
-        <a href="{% url 'asset.views.index' %}">
+        <a href="{% url 'asset:AssetForms' %}" >
         <button class="btn btn-success btn-lg">
             Asset
-
         </button></a>
     </div>
     <div class="col-md-5">
+        <a href="{% url 'asset:MerchantForms' %}" >
         <button class="btn btn-primary btn-lg">
             Merchant
-        </button>
+        </button></a>
     </div>
     <div class="col-md-1"></div>
 </div>
