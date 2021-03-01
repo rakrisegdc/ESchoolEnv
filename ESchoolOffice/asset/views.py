@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
 from . import forms
-from .models import Asset, Merchant
+from .models import Asset, Merchant, AssetManagementIn, AssetManagementDetails, AssetManagementOut
 from django.views.generic.edit import DeleteView
 
 
@@ -42,6 +42,21 @@ def merchant(request):
     else:
         form = forms.MerchantForms()
     return render(request, 'asset/Merchant.html', {'form': form, 'data': model_object})
+
+# asset inwards create function
+
+
+def asset_in(request):
+    model_object = AssetManagementIn.objects.all()
+    if request.method == 'POST':
+        form = forms.AssetManagementInForms(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            return redirect("asset:AssetManagementInForms")
+    else:
+        form = forms.AssetManagementInForms()
+    return render(request, 'asset/AssetManagementIn.html', {'form': form, 'data': model_object})
 
 
 # asset delete function

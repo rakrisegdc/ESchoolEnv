@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.urls import path
 
-from .views import asset, edit_asset, delete_asset, merchant, index, merchant_edit, merchant_delete
+from .views import asset, edit_asset, delete_asset, merchant, index, merchant_edit, merchant_delete, asset_in
 from . import views
 
 app_name = 'asset'
@@ -15,4 +15,5 @@ urlpatterns = [
     url(r'merchant_delete/(?P<pk>\d+)/$', merchant_delete, name='merchant_delete'),
     path('asset_detail/<int:pk>/', views.AssetView.as_view(), name='asset_detail'),
     path('merchant_detail/<int:pk>/', views.MerchantView.as_view(), name='merchant_detail'),
+    url(r'/in_asset', asset_in, name='AssetManagementInForms'),
 ]

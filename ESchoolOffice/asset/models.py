@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import date
 # Create your models here.
 
 
@@ -10,8 +10,9 @@ class Merchant(models.Model):
     mer_email = models.EmailField(max_length=30)
 
     def __str__(self):
-        return "%s %s %s %s" % (
-            self.mer_name, self.mer_address, self.mer_contactno, self.mer_email)
+        return self.mer_name
+        # return "%s %s %s %s" % (
+        #     self.mer_name, self.mer_address, self.mer_contactno, self.mer_email)
 
 
 class Asset(models.Model):
@@ -25,7 +26,7 @@ class Asset(models.Model):
 
 class AssetManagementIn(models.Model):
     merchant = models.ForeignKey(Merchant, on_delete=models.RESTRICT)
-    assetmgmtin_date = models.DateField()
+    assetmgmtin_date = models.DateField(default=date.today)
     assetmgmtin_billno = models.CharField(max_length=20, unique=True)
     assetmgmtin_billamount = models.IntegerField()
 
@@ -40,7 +41,6 @@ class AssetManagementDetails(models.Model):
     assetdet_qty = models.IntegerField()
     assetdet_unitrate = models.IntegerField()
     assetdet_unit = models.CharField(max_length=10, default='')
-
 
     def __str__(self):
         return "%s %s %s %s %s" % (
