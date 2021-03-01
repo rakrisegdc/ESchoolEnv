@@ -34,7 +34,7 @@ class Student(models.Model):
     stud_nationality = models.CharField(max_length=30)
     mothertongue = models.ForeignKey(Mothertongue, on_delete=models.RESTRICT)
     stud_dob = models.DateField(default=date.today)
-    stud_guardian = models.IntegerField(default=None)
+    stud_guardian = models.IntegerField(blank=True, null=True)
     stud_bloodgroup = models.IntegerField(choices=BLOOD_GROUP, default=None)
     stud_gender = models.CharField(choices=STUD_GENDER, max_length=1, default=None)
 

@@ -14,7 +14,7 @@ def studentregistration(request):
         if form.is_valid():
             instance = form.save(commit=False)
             instance.save()
-            return redirect('student:StudentForm')
+            return redirect('student:StudentRegistration')
     else:
         form = forms.StudentForm()
     return render(request, 'student/Student.html', {'form': form, 'data': model_object})
