@@ -23,4 +23,6 @@ urlpatterns = [
     path('pta/', include('pta.urls')),
     url(r'^asset/', include('asset.urls')),
     url(r'^user_settings/', include('user_settings.urls')),
+    path('academics/', include('academic_settings.urls')),
+    url(r'student/', include('student.urls')),
 ]
