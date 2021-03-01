@@ -6,16 +6,14 @@ from django.views import generic
 from .forms import *
 
 
-def create(request):
-    if request.method == 'POST':
-        print("we are here")
-        form = PTADesignationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponse("Saved")
-    else:
-        form = PTADesignationForm()
-        return render(request, 'pta\PTADesignation.html', {'form': form})
+class PTADesignationForm(generic.FormView):
+    model = PTADesignation
+    template_name = 'pta\PTADesignation.html'
+    form_class = PTADesignationForm
+
+    def form_valid(self, form):
+        form.save()
+        return HttpResponse("Saved")
 
 
 class PTADesignationIndexView(generic.ListView):
@@ -23,11 +21,32 @@ class PTADesignationIndexView(generic.ListView):
     context_object_name = 'pta_designation_list'
 
     def get_queryset(self):
-        abcd = PTADesignation.objects.all()
-        print(abcd)
-        return abcd
+        return PTADesignation.objects.all()
 
 
 class PTADesignationDetailView(generic.DetailView):
     model = PTADesignation
     template_name = 'pta/PTADesignationView.html'
+
+
+class CommiteeRegistration(generic.ListView):
+    template_name = 'pta\PTACommiteeRegisration.html'
+    context_object_name = 'commitee_registration_list'
+
+    def get_queryset(self):
+        return CommiteeRegistration.objects.all()
+
+
+class CommiteeRegistrationDetail(generic.DetailView):
+    model = CommiteeRegistration
+    template_name = 'pta/PTACommiteeRegistrationDetail.html'
+
+
+class CommiteeRegistrationForm(generic.FormView):
+    model = CommitteeRegistration
+    template_name = 'pta/PTACommiteeRegistrationForm.html'
+    form_class = CommitteeRegistrationForm
+
+    def form_valid(self, form):
+        form.save()
+        return HttpResponse("Saved")
