@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
+ for field i{%n object.meta.get_fields() %}
+<p> field.name</p>
+{% endfor %}
 <p>Designation: {{ object.pta_designation_name }}</p>
 </body>
 </html>
