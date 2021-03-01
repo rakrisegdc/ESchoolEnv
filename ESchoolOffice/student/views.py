@@ -9,15 +9,13 @@ def index(request):
 
 def studentregistration(request):
     model_object = Student.objects.all()
-    form = forms.StudentForm()
-
-    # if request.method == 'POST':
-    #     form = forms.StateForms(request.POST, request.FILES)
-    #     if form.is_valid():
-    #         instance = form.save(commit=False)
-    #         instance.save()
-    #         return redirect('state:StateForms')
-    # else:
-    #     form = forms.StateForms()
+    if request.method == 'POST':
+        form = forms.StudentForm(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            return redirect('student:StudentForm')
+    else:
+        form = forms.StudentForm()
     return render(request, 'student/Student.html', {'form': form, 'data': model_object})
 

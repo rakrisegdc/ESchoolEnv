@@ -34,13 +34,14 @@ class Student(models.Model):
     stud_nationality = models.CharField(max_length=30)
     mothertongue = models.ForeignKey(Mothertongue, on_delete=models.RESTRICT)
     stud_dob = models.DateField(default=date.today)
-    stud_guardian = models.IntegerField()
+    stud_guardian = models.IntegerField(default=None)
     stud_bloodgroup = models.IntegerField(choices=BLOOD_GROUP, default=None)
     stud_gender = models.CharField(choices=STUD_GENDER, max_length=1, default=None)
 
+
     def __str__(self):
         return self.stud_admno
-
+        # return "%s %s" % (self.stud_admno, str(self.standard))
 
 class StudentAcademic(models.Model):
     student = models.ForeignKey(Student, on_delete=models.RESTRICT)
