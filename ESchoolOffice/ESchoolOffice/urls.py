@@ -22,4 +22,8 @@ urlpatterns = [
     url(r'staff/', include('staff.urls')),
     path('pta/', include('pta.urls')),
     url(r'^asset/', include('asset.urls')),
+
+    path('academics/', include('academic_settings.urls')),
+
+    url(r'student/', include('student.urls')),
 ]

@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-<p>Designation: {{ object.pta_designation_name }}</p>
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update">
+</form>
 </body>
 </html>

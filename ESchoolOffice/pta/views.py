@@ -1,9 +1,20 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 
 from .forms import *
+
+# PTADesignation
+
+
+class PTADesignationList(generic.ListView):
+    template_name = 'pta\PTADesignationIndex.html'
+    # context_object_name = 'pta_designation_list'
+
+    def get_queryset(self):
+        return PTADesignation.objects.all()
 
 
 class PTADesignationForm(generic.FormView):
@@ -16,17 +27,23 @@ class PTADesignationForm(generic.FormView):
         return HttpResponse("Saved")
 
 
-class PTADesignationIndexView(generic.ListView):
-    template_name = 'pta\PTADesignationIndex.html'
-    context_object_name = 'pta_designation_list'
-
-    def get_queryset(self):
-        return PTADesignation.objects.all()
-
-
-class PTADesignationDetailView(generic.DetailView):
+class PTADesignationView(generic.DetailView):
     model = PTADesignation
     template_name = 'pta/PTADesignationView.html'
+
+
+class PTADesignationDelete(generic.DeleteView):
+    model = PTADesignation
+    template_name = 'pta/PTDesignationDelete.html'
+    success_url = reverse_lazy('pta:des_index')
+
+
+class PTADesignationUpdate(generic.UpdateView):
+    model = PTADesignation
+    fields = ['pta_designation_name']
+    template_name = 'pta/PTADesignationUpdate.html'
+
+# Commitee Registration
 
 
 class CommiteeRegistration(generic.ListView):
