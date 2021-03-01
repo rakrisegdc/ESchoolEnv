@@ -109,6 +109,7 @@
                 <th>Email</th>
                 <th>Edit</th>
                 <th>Delete</th>
+                <th>View</th>
             </tr>
             {% for obj in data %}
             <tr>
@@ -119,7 +120,7 @@
                 <td>{{obj.mer_email}}</td>
                 <td><a href="{% url 'asset:merchant_edit' pk=obj.id %}">Edit</a></td>
                 <td><a href="{% url 'asset:merchant_delete' pk=obj.id %}">Delete</a></td>
-<!--                <td><a href="/asset/merchant_delete/{{ merchant.id }}/">Delete </a></td>-->
+                <td><a href="/asset/merchant_detail/{{ obj.id }}/">View </a></td>
             </tr>
             {% endfor %}
         </table>
