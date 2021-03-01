@@ -9,8 +9,11 @@ class StudentForm(forms.ModelForm):
         widgets = {
             'stud_address': forms.Textarea(attrs={'cols': 40, 'rows': 4}),
             'stud_gender': forms.RadioSelect(choices=model.STUD_GENDER),
-
+            'stud_bloodgroup' : forms.RadioSelect(choices=model.BLOOD_GROUP),
+            'stud_dob': forms.DateInput(format=('%m/%d/%Y'), attrs={'class':'form-control', 'placeholder':'Select a date', 'type':'date'}),
+            'stud_regdate': forms.TextInput(attrs={'readonly':'readonly'})
         }
+
 
 
 class StudentAcademicForm(forms.ModelForm):
