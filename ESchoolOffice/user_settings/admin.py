@@ -5,7 +5,7 @@ class ReligionAdmin(admin.ModelAdmin):
     fields = ['religion_name']
 
 class CasteAdmin(admin.ModelAdmin):
-    fields = ['religion,caste_name']
+    fields = ['religion','caste_name']
 
 class StateAdmin(admin.ModelAdmin):
     fields = ['state_name']

@@ -12,6 +12,7 @@
 <body id="top">
 <form method="post">
     {% csrf_token %}
+
 <div class="container">
   <h2>Merchant</h2>
 
@@ -30,7 +31,7 @@
                         <div class="col-md-3 text-right">
                            Merchant Name: 
                         </div>
-                        <div class="col-md-6 bg-warning">
+                        <div class="col-md-6">
                             {{form.mer_name}}
                         </div>
                     </div>
@@ -97,6 +98,34 @@
             </div>
     </div>
 </div>
+    <div class="container">
+    <div>
+        <table border="1">
+            <tr>
+                <th>Sl No</th>
+                <th>Merchant Name</th>
+                <th>Address</th>
+                <th>Contact No.</th>
+                <th>Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>View</th>
+            </tr>
+            {% for obj in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{obj.mer_name}}</td>
+                <td>{{obj.mer_address}}</td>
+                <td>{{obj.mer_contactno}}</td>
+                <td>{{obj.mer_email}}</td>
+                <td><a href="{% url 'asset:merchant_edit' pk=obj.id %}">Edit</a></td>
+                <td><a href="{% url 'asset:merchant_delete' pk=obj.id %}">Delete</a></td>
+                <td><a href="/asset/merchant_detail/{{ obj.id }}/">View </a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    </div>
 
 </form>
 </body>
