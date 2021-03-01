@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
+
 from . import forms
 from .models import Asset, Merchant
+from django.views.generic.edit import DeleteView
 
 
 def index(request):
@@ -59,13 +62,13 @@ def edit_asset(request, pk):
     return render(request, template, context)
 
 
-def delete_merchant(request, pk):
+def merchant_delete(request, pk):
     post = get_object_or_404(Merchant, pk=pk)
     post.delete()
     return redirect('asset:MerchantForms')
 
 
-def edit_merchant(request, pk):
+def merchant_edit(request, pk):
     template = "asset/Merchant.html"
     post = get_object_or_404(Merchant, pk=pk)
     model_object = Merchant.objects.all()
@@ -75,7 +78,6 @@ def edit_merchant(request, pk):
             instance = form.save(commit=False)
             instance.save()
             return redirect('asset:MerchantForms')
-        print("if")
     else:
         form = forms.MerchantForms(instance=post)
         context = {
@@ -83,5 +85,4 @@ def edit_merchant(request, pk):
             'post': post,
             'data': model_object,
         }
-        print("else")
     return render(request, template, context)

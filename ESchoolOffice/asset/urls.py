@@ -1,5 +1,6 @@
 from django.conf.urls import url
-from .views import asset, edit_asset, delete_asset, merchant, index, edit_merchant, delete_merchant
+from .views import asset, edit_asset, delete_asset, merchant, index, merchant_edit, merchant_delete
+from . import views
 
 app_name = 'asset'
 urlpatterns = [
@@ -7,7 +8,7 @@ urlpatterns = [
     url(r'/asset', asset, name='AssetForms'),
     url(r'edit_asset/(?P<pk>\d+)/$', edit_asset, name='edit_asset'),
     url(r'delete_asset/(?P<pk>\d+)/$', delete_asset, name='delete_asset'),
-    url(r'merchant', merchant, name='MerchantForms'),
-    url(r'edit_merchant/(?P<pk>\d+)/$', edit_merchant, name='edit_merchant'),
-    url(r'delete_merchant/(?P<pk>\d+)/$', delete_merchant, name='delete_merchant'),
+    url(r'/merchant', merchant, name='MerchantForms'),
+    url(r'merchant_edit/(?P<pk>\d+)/$', merchant_edit, name='merchant_edit'),
+    url(r'merchant_delete/(?P<pk>\d+)/$', merchant_delete, name='merchant_delete'),
 ]
