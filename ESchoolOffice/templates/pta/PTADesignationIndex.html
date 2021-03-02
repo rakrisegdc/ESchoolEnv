@@ -5,18 +5,22 @@
     <title>Title</title>
 
 </head>
-<body>
+<div style="height:30px">
+<td><a href="/pta/des_create">Create </a></td>
+</div>
 <div style="height:100px">Index Of PTA Designation</div>
-{% if pta_designation_list %}
+{% if object_list %}
     <table>
         <tr>
         <th>Designation</th>
         <th>Actions</th>
         </tr>
-    {% for designation in pta_designation_list %}
+    {% for designation in object_list %}
         <tr>
         <td>{{ designation.pta_designation_name }}</td>
-        <td><a href="/pta/designation/{{ question.id }}/">View </a></td>
+        <td><a href="/pta/des/{{ designation.id }}/">View </a></td>
+        <td><a href="/pta/des_delete/{{ designation.id }}/">Delete </a></td>
+        <td><a href="/pta/des_update/{{ designation.id }}/">Update </a></td>
         </tr>
     {% endfor %}
     </table>
