@@ -58,11 +58,12 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>User Settings</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="tables-basic.html">Caste</a></li>
-                            <li><i class="fa fa-table"></i><a href="tables-data.html">Mother Tongue</a></li>
-                            <li><i class="fa fa-table"></i><a href="tables-data.html">Relation</a></li>
-                            <li><i class="fa fa-table"></i><a href="tables-data.html">Religion</a></li>
-                            <li><i class="fa fa-table"></i><a href="tables-data.html">State</a></li>
+                            <li><i class="fa fa-table"></i><a href="{% url 'user_settings:ReligionForms' %}">Religion</a></li>
+                            <li><i class="fa fa-table"></i><a href="{% url 'user_settings:CasteForms' %}">Caste</a></li>
+                            <li><i class="fa fa-table"></i><a href="{% url 'user_settings:StateForms' %}">State</a></li>
+                            <li><i class="fa fa-table"></i><a href="{% url 'user_settings:MothertongueForms' %}">Mother Tongue</a></li>
+                            <li><i class="fa fa-table"></i><a href="{% url 'user_settings:RelationForms' %}">Relation</a></li>
+
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">

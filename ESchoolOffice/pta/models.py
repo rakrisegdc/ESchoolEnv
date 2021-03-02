@@ -15,7 +15,7 @@ class PTADesignation(models.Model):
 class CommitteeRegistration(models.Model):
     academicyear = models.ForeignKey(AcademicYear, on_delete=models.PROTECT)
     ptadesignation = models.ForeignKey(PTADesignation, on_delete=models.PROTECT)
-    Parent = models.ForeignKey(Parent, on_delete=models.CASCADE)
+    parent = models.ForeignKey(Parent, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.academicyear

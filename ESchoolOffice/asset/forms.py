@@ -29,7 +29,7 @@ class AssetManagementInForms(ModelForm):
 class AssetManagementDetailsForms(ModelForm):
     class Meta:
         model = AssetManagementDetails
-        fields = '__all__'
+        fields = ['asset', 'assetdet_qty', 'assetdet_unitrate', 'assetdet_unit']
 
 
 class AssetManagementOutForms(ModelForm):
