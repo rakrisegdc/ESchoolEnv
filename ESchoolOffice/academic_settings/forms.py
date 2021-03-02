@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from . models import Subject,AcademicYear,Standard
+from . models import Subject, AcademicYear, Standard, Division, Grade
 
 class SubjectForm(ModelForm):
      class Meta:
@@ -15,6 +15,19 @@ class StandardForm(ModelForm):
     class Meta:
         model = Standard
         fields = '__all__'
+
+
+class DivisionForm(ModelForm):
+    class Meta:
+        model = Division
+        fields = '__all__'
+
+
+class GradeForm(ModelForm):
+    class Meta:
+        model = Grade
+        fields = '__all__'
+
 
 
 
