@@ -46,33 +46,66 @@ def merchant(request):
 # asset inwards create function
 
 
-def asset_in(request):
-    model_object = AssetManagementIn.objects.all()
-    if request.method == 'POST':
-        form = forms.AssetManagementInForms(request.POST, request.FILES)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.save()
-            return redirect("asset:AssetManagementDetailsForms")
-    else:
-        form = forms.AssetManagementInForms()
-    return render(request, 'asset/AssetManagementIn.html', {'form': form, 'data': model_object})
+# def asset_in(request):
+#     model_object = AssetManagementIn.objects.all()
+#
+#     if request.method == 'POST':
+#         form = forms.AssetManagementInForms(request.POST, request.FILES)
+#         if form.is_valid():
+#             instance = form.save(commit=False)
+#             instance.save()
+#             response = instance.id
+#         return redirect("asset:AssetManagementDetailsForms", fk=response)
+#     else:
+#         form = forms.AssetManagementInForms()
+#     return render(request, 'asset/AssetManagementIn.html', {'form': form, 'data': model_object})
 
 
 # asset inwards details create function
 
 
-def asset_details(request):
-    model_object = AssetManagementDetails.objects.all()
-    if request.method == 'POST':
-        form = forms.AssetManagementDetailsForms(request.POST, request.FILES)
-        if form.is_valid():
+def asset_in(request):
+    model_objectassetin = AssetManagementIn.objects.all()
+    model_objectdetails = AssetManagementDetails.objects.all()
+    model_objectasset = Asset.objects.all()
+    if request.method == "GET":
+        # create the object - Actionform
+        form = forms.AssetManagementInForms
+        form2 = forms.AssetManagementDetailsForms
+        # pass into it
+        return render(request, 'asset/AssetManagementIn.html', {'form': form, 'form2': form2, 'data': model_objectassetin, 'data1': model_objectdetails, 'data2': model_objectasset})
+    elif request.method == "POST":
+        # take all of the user data entered to create a new action instance in the table
+        form = forms.AssetManagementInForms(request.POST, request.FILES)
+        form2 = forms.AssetManagementDetailsForms(request.POST, request.FILES)
+        if form.is_valid() and form2.is_valid():
             instance = form.save(commit=False)
+            instance1 = form2.save(commit=False)
+            # set the action_id Foreignkey
+            instance.id = instance1.action_id
             instance.save()
+            instance1.save()
             return redirect("asset:AssetManagementDetailsForms")
-    else:
-        form = forms.AssetManagementDetailsForms()
-    return render(request, 'asset/AssetDetails.html', {'form': form, 'data': model_object})
+        else:
+            form = forms.AssetManagementInForms()
+            form2 = forms.AssetManagementDetailsForms()
+        return render(request, 'asset/AssetManagementIn.html', {'form': form, 'form2': form2})
+
+
+
+# def asset_details(request):
+#     model_object = AssetManagementDetails.objects.all()
+#     model_objectasset = Asset.objects.all()
+#     if request.method == 'POST':
+#         form = forms.AssetManagementDetailsForms(request.POST, request.FILES)
+#         if form.is_valid():
+#             instance = form.save(commit=False)
+#             instance.save()
+#             # return redirect("asset/AssetDetails.html")
+#             return render(request, 'asset:AssetManagementDetailsForms', {'form': form, 'data1': model_objectasset})
+#     else:
+#         form = forms.AssetManagementDetailsForms()
+#     return render(request, 'asset/AssetDetails.html', {'form': form, 'data': model_object, 'data1': model_objectasset})
 
 
 # asset delete function
