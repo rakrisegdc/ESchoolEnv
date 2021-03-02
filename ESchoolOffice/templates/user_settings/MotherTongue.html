@@ -3,34 +3,37 @@
 <html lang="">
 
 <head>
-<title>Mother Tongue</title>
+<title>mothertongue</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="CSS/style.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body id="top">
-
+<form method="post">
+ {% csrf_token %}
 <div class="container">
-  <h2>MotherTongue</h2>
+  <h2>Mothertongue</h2>
 
   <div class="row">
    <div class="col-md-12">
             <div class="card table-bordered">
-                <div class="card-header">
-                    Create New Mother Tongue
+
+                    <div class="card-header">
+                    Create New Mothertongue
                 </div>
                 <div class="card-body">
+
                     <div class="row card-body2">
 
                         <div class="col-md-1">
                         </div>
 
                         <div class="col-md-3 text-right">
-                        Name of Mother Tongue: 
+                           Mothertongue:
                         </div>
                         <div class="col-md-6 bg-warning">
-                        vdf
+                            {{ form.mothertongue_name }}
                         </div>
                     </div>
 
@@ -38,12 +41,12 @@
                         <div class="col-md-4 card-body2">
                         </div>
                         <div class="col-md-4">
-                        
+
                         <button class="btn btn-primary btn-btn">
                             Reset
                         </button>
                         </div>
-                        
+
                         <div class="col-md-4">
                         <button class="btn btn-success btn-btn">
                             Save
@@ -54,13 +57,34 @@
                     </div>
 
 
+
                     </div>
+
                 </div>
             </div>
     </div>
 </div>
-</div>
-
+       <div class="container">
+    <div>
+        <table border="1">
+            <tr>
+                <th>Sl No</th>
+                <th>Mothertongue</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            {% for obj in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{obj.mothertongue_name}}</td>
+                <td><a href="{% url 'user_settings:edit_mothertongue' pk=obj.id %}">Edit</a></td>
+                <td><a href="{% url 'user_settings:delete_mothertongue' pk=obj.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    </div>
+</form>
 
 </body>
 </html>
