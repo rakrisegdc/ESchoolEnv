@@ -1,0 +1,30 @@
+{% extends 'layout/base_template.html' %}
+{% block title %} Subjects {% endblock title %}
+
+{% block body_data %}
+
+<div style="height:30px">
+<td><a href='{%  url 'pta:pta_committee_create'  %}'>Create </a></td>
+</div>
+<div style="height:100px">Index Of PTA Committee </div>
+{% if object_list %}
+    <table class="table table-primary">
+        <tr>
+        <th>Committee Date</th>
+        <th>Committee Agenda</th>
+        </tr>
+    {% for committee in object_list %}
+        <tr>
+        <td>{{ committee.comm_date }}
+        <td>{{ committee.comm_agenda }}</td>
+        <td><a href="/pta/committee/view/{{ designation.id }}/">View </a></td>
+        <td><a href="/pta/committee/delete/{{ designation.id }}/">Delete </a></td>
+        <td><a href="/pta/committee/update/{{ designation.id }}/">Update </a></td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No PTA Committee Registrations  Added.</p>
+{% endif %}
+
+{% endblock body_data %}
