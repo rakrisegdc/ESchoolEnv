@@ -14,5 +14,9 @@ urlpatterns = [
     path('reg/update/<int:pk>/', views.CommitteeRegistrationUpdate.as_view(), name='pta_reg_update'),
     path('reg/delete/<int:pk>/', views.CommitteeRegistrationDelete.as_view(), name='pta_reg_delete'),
     path('reg/view/<int:pk>/', views.CommitteeRegistrationView.as_view(), name='pta_reg_view'),
-
+    path('committee/index', views.PTACommitteeList.as_view(), name='pta_committee_index'),
+    path('committee/create', views.PTACommitteeForm.as_view(), name='pta_committee_create'),
+    path('committee/update/<int:pk>/', views.PTACommitteeUpdate.as_view(), name='pta_committee_update'),
+    path('committee/view/<int:pk>/', views.PTACommitteeView.as_view(), name='pta_committee_view'),
+    path('committee/delete/<int:pk>/', views.PTACommitteeDelete.as_view(), name='pta_committee_delete'),
 ]

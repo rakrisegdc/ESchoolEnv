@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'layout/base_template.html' %}
+{% block title %} Subjects {% endblock title %}
 
-</body>
-</html>
+{% block body_data %}
+
+<form method="post">{% csrf_token %}
+
+    <table class="table table-primary">{{ form.as_table }}</table>
+    <input type="submit" value="Update">
+</form>
+
+{% endblock body_data %}

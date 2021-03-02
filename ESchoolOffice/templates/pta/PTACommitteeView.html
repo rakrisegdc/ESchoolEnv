@@ -1,10 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'layout/base_template.html' %}
+{% block title %} Subjects {% endblock title %}
 
-</body>
-</html>
+{% block body_data %}
+
+
+<!--<div class ="test">Sample</div>-->
+
+<table class="table table-primary">
+    <tr>
+        <th>Field</th>
+        <th>Value</th>
+    </tr>
+    <tr>
+        <td>Committee Date</td>
+        <td>{{ object.comm_date }}</td>
+    </tr>
+    <tr>
+        <td>Participants</td>
+        <td>{{  }}</td>
+    </tr>
+    <tr>
+        <td>Agenda</td>
+        <td>{{ object.comm_agenda }}</td>
+    </tr>
+    <tr>
+        <td>Committee Decision</td>
+        <td>{{ object.comm_decision }}</td>
+    </tr>
+</table>
+
+{% endblock body_data %}
