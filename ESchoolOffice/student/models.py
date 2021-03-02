@@ -40,8 +40,8 @@ class Student(models.Model):
 
 
     def __str__(self):
-        return self.stud_admno
-        # return "%s %s" % (self.stud_admno, str(self.standard))
+        # return self.stud_admno
+        return "%s %s %s" % (self.stud_admno, self.get_stud_gender_display, self.get_stud_bloodgroup_display)
 
 class StudentAcademic(models.Model):
     student = models.ForeignKey(Student, on_delete=models.RESTRICT)
