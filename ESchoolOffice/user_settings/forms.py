@@ -1,27 +1,32 @@
 from django import forms
 from .import models
 
-class ReligionForm(forms.ModelForm):
+# class UserSettingsForms(form.ModelForm):
+#     class Meta:
+#         model = models.Religion
+
+
+class ReligionForms(forms.ModelForm):
     class Meta:
         model = models.Religion
         fields = '__all__'
 
-class CasteForm(forms.ModelForm):
+class CasteForms(forms.ModelForm):
     class Meta:
         model = models.Caste
         fields = '__all__'
 
-class StateForm(forms.ModelForm):
+class StateForms(forms.ModelForm):
     class Meta:
         model = models.State
         fields = '__all__'
 
-class MothertongueForm(forms.ModelForm):
+class MothertongueForms(forms.ModelForm):
     class Meta:
         model = models.Mothertongue
         fields = '__all__'
 
-class RelationForm(forms.ModelForm):
+class RelationForms(forms.ModelForm):
     class Meta:
         model = models.Religion
         fields = '__all__'

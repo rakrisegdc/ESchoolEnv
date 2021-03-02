@@ -12,7 +12,7 @@ class Caste(models.Model):
     caste_name = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.caste_name
+        return "%s,%s" % (self.religion,self.caste_name)
 
 
 class State(models.Model):

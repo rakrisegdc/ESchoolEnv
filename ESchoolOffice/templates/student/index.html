@@ -5,11 +5,36 @@
     <title>Title</title>
 </head>
 <body>
-    <table>
+<div><a href="{% url 'student:StudentRegistration' %}" >Student Registration</a></div>
+
+{% if object_list %}
+    <table border="1">
         <tr>
-            <td><a href="{% url 'student:StudentRegistration' %}" >Student Registration</td>
+            <th colspan="5">Students Details</th>
         </tr>
+        <tr>
+            <th>Adm. No</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th colspan="3">Actions</th>
+        </tr>
+    {% for student in object_list %}
+        <tr>
+            <td>{{ student.stud_admno }}</td>
+            <td>{{ student.stud_name }}</td>
+            <td>{{ student.stud_address }}</td>
+            <td><a href="{% url 'student:StudView' pk=student.id %}">View</a></td>
+            <td>Update</td>
+            <td>Delete</td>
+<!--            <td><a href="/pta/des/{{ designation.id }}/">View </a></td>-->
+<!--            <td><a href="/pta/des_delete/{{ designation.id }}/">Delete </a></td>-->
+<!--            <td><a href="/pta/des_update/{{ designation.id }}/">Update </a></td>-->
+        </tr>
+    {% endfor %}
     </table>
+{% else %}
+    <p>No PTA Designations Added.</p>
+{% endif %}
 
 </body>
 </html>

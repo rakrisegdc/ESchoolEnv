@@ -1,13 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
-
+from django.views import generic
 from . import forms
 from .models import Asset, Merchant
 from django.views.generic.edit import DeleteView
 
 
+# index page
+
 def index(request):
     return render(request, 'asset/index.html')
+
+
+# asset create function
 
 
 def asset(request):
@@ -23,6 +28,9 @@ def asset(request):
     return render(request, 'asset/asset.html', {'form': form, 'data': model_object})
 
 
+# merchant create function
+
+
 def merchant(request):
     model_object = Merchant.objects.all()
     if request.method == 'POST':
@@ -36,10 +44,16 @@ def merchant(request):
     return render(request, 'asset/Merchant.html', {'form': form, 'data': model_object})
 
 
+# asset delete function
+
+
 def delete_asset(request, pk):
     post = get_object_or_404(Asset, pk=pk)
     post.delete()
     return redirect('asset:AssetForms')
+
+
+# asset delete function
 
 
 def edit_asset(request, pk):
@@ -62,10 +76,16 @@ def edit_asset(request, pk):
     return render(request, template, context)
 
 
+# merchant delete function
+
+
 def merchant_delete(request, pk):
     post = get_object_or_404(Merchant, pk=pk)
     post.delete()
     return redirect('asset:MerchantForms')
+
+
+# merchant edit function
 
 
 def merchant_edit(request, pk):
@@ -86,3 +106,23 @@ def merchant_edit(request, pk):
             'data': model_object,
         }
     return render(request, template, context)
+
+
+# Asset edit function
+
+
+class AssetView(generic.DetailView):
+    model = Asset
+    template_name = 'asset/AssetView.html'
+
+
+# Merchant edit function
+
+class MerchantView(generic.DetailView):
+    model = Merchant
+    template_name = 'asset/MerchantView.html'
+
+
+
+
+
