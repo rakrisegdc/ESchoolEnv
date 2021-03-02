@@ -10,25 +10,34 @@
 <body>
 <div class="row mt-4" >
     <div class="col-md-1"></div>
-    <div class="col-md-5">
-        <a href="{% url 'asset:AssetForms' %}" >
+    <div class="col-md-2">
+        <a href="{% url 'user_settings:ReligionForms' %}" >
         <button class="btn btn-success btn-lg">
-            Asset
+            Religion
         </button></a>
     </div>
-    <div class="col-md-5">
-        <a href="{% url 'asset:MerchantForms' %}" >
+    <div class="col-md-2">
+        <a href="{% url 'user_settings:CasteForms' %}" >
         <button class="btn btn-primary btn-lg">
-            Merchant
+            Caste
         </button></a>
     </div>
-</div>
-<div class="row mt-4" >
-    <div class="col-md-1"></div>
-    <div class="col-md-5">
-        <a href="{% url 'asset:AssetManagementInForms' %}" >
-        <button class="btn btn-primary btn-lg">
-            Asset->>Inward
+    <div class="col-md-2">
+        <a href="{% url 'user_settings:StateForms' %}" >
+        <button class="btn btn-info btn-lg">
+            State
+        </button></a>
+    </div>
+    <div class="col-md-2">
+        <a href="{% url 'user_settings:MothertongueForms' %}" >
+        <button class="btn btn-info btn-lg">
+            Mothertongue
+        </button></a>
+    </div>
+    <div class="col-md-2">
+        <a href="{% url 'user_settings:RelationForms' %}" >
+        <button class="btn btn-info btn-lg">
+            Relation
         </button></a>
     </div>
     <div class="col-md-1"></div>
