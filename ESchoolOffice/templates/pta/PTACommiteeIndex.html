@@ -7,7 +7,7 @@
 <td><a href='{%  url 'pta:pta_committee_create'  %}'>Create </a></td>
 </div>
 <div style="height:100px">Index Of PTA Committee </div>
-{% object_list %}
+{% if object_list %}
     <table class="table table-primary">
         <tr>
         <th>Committee Date</th>

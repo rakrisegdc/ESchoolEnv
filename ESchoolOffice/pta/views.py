@@ -40,12 +40,14 @@ class PTADesignationUpdate(generic.UpdateView):
     model = PTADesignation
     fields = ['pta_designation_name']
     template_name = 'pta/PTADesignationUpdate.html'
+
+
 # endregion
 
 
 # region Committee Registration
 class CommitteeRegistrationList(generic.ListView):
-    template_name = 'pta\PTACommiteeRegisration.html'
+    template_name = 'pta\PTACommitteeRegistrationIndex.html'
     context_object_name = 'committee_registration_list'
 
     def get_queryset(self):
@@ -77,6 +79,8 @@ class CommitteeRegistrationUpdate(generic.UpdateView):
     model = PTADesignation
     fields = ['academicyear', 'ptadesignation', 'parent']
     template_name = 'pta/PTACommitteeRegUpdate.html'
+
+
 # endregion
 
 
@@ -114,4 +118,3 @@ class PTACommitteeUpdate(generic.UpdateView):
     fields = ['comm_date', 'committeeregistration', 'comm_agenda', 'comm_decision']
     template_name = 'pta/PTACommitteeUpdate.html'
 # endregion
-
