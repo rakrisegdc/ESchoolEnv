@@ -28,5 +28,5 @@ class MothertongueForms(forms.ModelForm):
 
 class RelationForms(forms.ModelForm):
     class Meta:
-        model = models.Religion
+        model = models.Relation
         fields = '__all__'
