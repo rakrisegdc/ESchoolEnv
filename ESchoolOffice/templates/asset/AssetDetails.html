@@ -21,30 +21,63 @@
             {% csrf_token %}
             <div class="container">
                 <div>
-                  <h2>Assets Details
+                  <h2>Asset Management In
                   </h2>
               </div>
 
               <div class="row">
                <div class="col-md-12">
                 <div class="card table-bordered table-student">
+                    <div class="card-header">
+                        Inward Asset Details
+                    </div>
+                    <div class="card-body">
+                        <div class="row card-body2">
+
+                            <div class="col-md-1"></div>
+                            <div class="col-md-2 text-right">
+                                Date:
+                            </div>
+                            <div class="col-md-2 bg-warning">
+                                {{form.assetmgmtin_date}}
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-2 text-right">
+                                Merchant:
+                            </div>
+                            <div class="col-md-2 bg-warning">
+                                {{form.merchant}}
+                            </div>
+                        </div>
+                        <div class="row card-body2">
+
+                            <div class="col-md-1"></div>
+                            <div class="col-md-2 text-right">
+                                Bill No:
+                            </div>
+                            <div class="col-md-2 bg-warning">
+                                {{form.assetmgmtin_billno}}
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-2 text-right">
+                                Bill Amount:
+                            </div>
+                            <div class="col-md-2 bg-warning">
+                                {{form.assetmgmtin_billamount}}
+                            </div>
+                        </div>
 
 
+                    </div>
 
-
-                    <div class="row">
+                   <div class="row">
                        <div class="col-md-8">
                         <div class="card table-bordered table-student">
                          <div class="card-body">
                             <div class="row card-body2">
 
                                 <div class="col-md-1"></div>
-                                <div class="col-md-2 text-right">
-                                    Asset Billno:
-                                </div>
-                                <div class="col-md-2 bg-warning">
-                                    {{form.assetmanagementin}}
-                                </div>
+
                                 <div class="col-md-1"></div>
                                 <div class="col-md-2 text-right">
                                     Quantity:
@@ -92,7 +125,7 @@
 
                                     </thead>
                                     <tbody>
-                                        {% for obj in data %}
+                                        {% for obj in data1 %}
                                         <tr>
                                             <td>{{forloop.counter}}</td>
                                             <td>{{obj.assetmanagementin}}</td>
@@ -129,8 +162,8 @@
                     </div>
                 </div>
             </div>
-                    
-                    
+
+
         </div>
 
     </div>
@@ -155,7 +188,7 @@
                 </div>
 
                 <div class="col-md-2 text-left">
-                    <button class="btn btn-success btn-btn" onclick="return confirm('Are you sure you want add this assets to the bill?');">
+                    <button class="btn btn-success btn-btn" onclick="return confirm('Are you sure you want add this bill');">
                         Submit
                     </button>
                 </div>
