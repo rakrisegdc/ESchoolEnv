@@ -1,0 +1,12 @@
+{% extends 'layout/base_template.html' %}
+{% block title %} Subjects {% endblock title %}
+
+{% block body_data %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock body_data %}
