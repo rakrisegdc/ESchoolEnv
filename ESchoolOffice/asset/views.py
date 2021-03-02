@@ -59,6 +59,22 @@ def asset_in(request):
     return render(request, 'asset/AssetManagementIn.html', {'form': form, 'data': model_object})
 
 
+# asset inwards details create function
+
+
+def asset_details(request):
+    model_object = AssetManagementDetails.objects.all()
+    if request.method == 'POST':
+        form = forms.AssetManagementDetailsForms(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            return redirect("asset:AssetManagementDetailsForms")
+    else:
+        form = forms.AssetManagementDetailsForms()
+    return render(request, 'asset/AssetDetails.html', {'form': form, 'data': model_object})
+
+
 # asset delete function
 
 

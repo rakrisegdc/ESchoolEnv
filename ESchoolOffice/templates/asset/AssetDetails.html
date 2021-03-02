@@ -52,9 +52,7 @@
                                 <div class="col-md-1 bg-warning">
                                     {{form.assetdet_qty}}
                                 </div>
-                                <div class="col-md-1">
-                                    <button class="btn btn-secondary btn-sm">Add+</button>
-                                </div>
+
                             </div>
                              <div class="row card-body2">
 
@@ -76,7 +74,11 @@
                                 <div class="col-md-2 bg-warning">
                                     {{form.assetdet_unitrate}}
                                 </div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-1">
+                                    <button class="btn btn-success btn-btn" onclick="return confirm('Are you sure you want add this assets to the bill?');">Add+</button>
 
+                                </div>
                             </div>
 
                             <div class="row">
@@ -116,7 +118,14 @@
                         <div class="card-header">
                             Asset List
                         </div>
-
+                        <table border="1">
+                            {% for obj in data %}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{obj.asset_name}}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
                     </div>
                 </div>
             </div>
