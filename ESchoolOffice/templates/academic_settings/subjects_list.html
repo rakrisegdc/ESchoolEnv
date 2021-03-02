@@ -11,13 +11,7 @@
 </head>
 <body id="top">
 <h1>Subjects</h1>
-
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
-
+<a href="{% url 'add-subject' %}">Add</a>
 <table border="1">
     <thead>
         <th>Slno</th>
@@ -30,12 +24,13 @@
         <tr>
             <td></td>
             <td>{{ subject.sub_name }}</td>
-            <td><a href=""></a></td>
-            <td></td>
+            <td><a href="editsubject/{{ subject.id }}/">Edit</a></td>
+            <td><a href="deletesubject/{{ subject.id }}/">Delete</a>
+            </td>
         </tr>
     {% empty %}
         <tr>
-            <td colspan="2">No Subjects Found</td>
+            <td colspan="4">No Subjects Found</td>
         </tr>
     {% endfor %}
     </tbody>
