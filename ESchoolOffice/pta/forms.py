@@ -13,6 +13,10 @@ class CommitteeRegistrationForm(ModelForm):
         model = CommitteeRegistration
         fields = '__all__'
 
+        def __init__(self, *args, **kwargs):
+            super(CommitteeRegistrationForm, self).__init__(*args, **kwargs)
+            self.fields['academicyear'].widget.attrs.update({'class': 'myfieldclass'})
+
 
 class PTACommitteeForm(ModelForm):
     class Meta:

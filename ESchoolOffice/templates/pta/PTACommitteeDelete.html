@@ -1,0 +1,12 @@
+{% extends 'layout/base_template.html' %}
+{% block title %} Subjects {% endblock title %}
+
+{% block body_data %}
+
+<form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    <input type="submit" value="Confirm">
+    <a href="/pta/reg/index">Cancel</a>
+</form>
+
+{% endblock body_data %}

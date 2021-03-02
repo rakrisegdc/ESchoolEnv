@@ -6,12 +6,10 @@ from django.views import generic
 
 from .forms import *
 
-# PTADesignation
 
-
+# region PTADesignation
 class PTADesignationList(generic.ListView):
     template_name = 'pta\PTADesignationIndex.html'
-    # context_object_name = 'pta_designation_list'
 
     def get_queryset(self):
         return PTADesignation.objects.all()
@@ -42,24 +40,24 @@ class PTADesignationUpdate(generic.UpdateView):
     model = PTADesignation
     fields = ['pta_designation_name']
     template_name = 'pta/PTADesignationUpdate.html'
+# endregion
 
-# Commitee Registration
 
-
-class CommiteeRegistration(generic.ListView):
+# region Committee Registration
+class CommitteeRegistrationList(generic.ListView):
     template_name = 'pta\PTACommiteeRegisration.html'
-    context_object_name = 'commitee_registration_list'
+    context_object_name = 'committee_registration_list'
 
     def get_queryset(self):
-        return CommiteeRegistration.objects.all()
+        return CommitteeRegistration.objects.all()
 
 
-class CommiteeRegistrationDetail(generic.DetailView):
-    model = CommiteeRegistration
+class CommitteeRegistrationView(generic.DetailView):
+    model = CommitteeRegistration
     template_name = 'pta/PTACommiteeRegistrationDetail.html'
 
 
-class CommiteeRegistrationForm(generic.FormView):
+class CommitteeRegistrationForm(generic.FormView):
     model = CommitteeRegistration
     template_name = 'pta/PTACommiteeRegistrationForm.html'
     form_class = CommitteeRegistrationForm
@@ -67,3 +65,53 @@ class CommiteeRegistrationForm(generic.FormView):
     def form_valid(self, form):
         form.save()
         return HttpResponse("Saved")
+
+
+class CommitteeRegistrationDelete(generic.DeleteView):
+    model = CommitteeRegistration
+    template_name = 'pta/PTACommiteeRegDelete.html'
+    success_url = reverse_lazy('pta:reg_index')
+
+
+class CommitteeRegistrationUpdate(generic.UpdateView):
+    model = PTADesignation
+    fields = ['academicyear', 'ptadesignation', 'parent']
+    template_name = 'pta/PTACommitteeRegUpdate.html'
+# endregion
+
+
+# region PTACommittee
+class PTACommitteeList(generic.ListView):
+    template_name = 'pta\PTACommiteeIndex.html'
+
+    def get_queryset(self):
+        return PTACommittee.objects.all()
+
+
+class PTACommitteeForm(generic.FormView):
+    model = PTACommittee
+    template_name = 'pta\PTACommitteeForm.html'
+    form_class = PTACommitteeForm
+
+    def form_valid(self, form):
+        form.save()
+        return HttpResponse("Saved")
+
+
+class PTACommitteeView(generic.DetailView):
+    model = PTACommittee
+    template_name = 'pta/PTACommitteeView.html'
+
+
+class PTACommitteeDelete(generic.DeleteView):
+    model = PTACommittee
+    template_name = 'pta/PTACommitteeDelete.html'
+    success_url = reverse_lazy('pta:des_index')
+
+
+class PTACommitteeUpdate(generic.UpdateView):
+    model = PTACommittee
+    fields = ['comm_date', 'committeeregistration', 'comm_agenda', 'comm_decision']
+    template_name = 'pta/PTACommitteeUpdate.html'
+# endregion
+
