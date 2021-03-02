@@ -48,6 +48,7 @@ def merchant(request):
 
 def asset_in(request):
     model_object = AssetManagementIn.objects.all()
+
     if request.method == 'POST':
         form = forms.AssetManagementInForms(request.POST, request.FILES)
         if form.is_valid():
@@ -64,15 +65,17 @@ def asset_in(request):
 
 def asset_details(request):
     model_object = AssetManagementDetails.objects.all()
+    model_objectasset = Asset.objects.all()
     if request.method == 'POST':
         form = forms.AssetManagementDetailsForms(request.POST, request.FILES)
         if form.is_valid():
             instance = form.save(commit=False)
             instance.save()
-            return redirect("asset:AssetManagementDetailsForms")
+            # return redirect("asset:AssetManagementDetailsForms")
+            return render(request, 'asset/AssetDetails.html', {'form': form, 'data': model_object, 'data1': model_objectasset})
     else:
         form = forms.AssetManagementDetailsForms()
-    return render(request, 'asset/AssetDetails.html', {'form': form, 'data': model_object})
+    return render(request, 'asset/AssetDetails.html', {'form': form, 'data': model_object, 'data1': model_objectasset})
 
 
 # asset delete function
