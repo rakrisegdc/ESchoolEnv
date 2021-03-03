@@ -1,9 +1,9 @@
 from django.shortcuts import  get_object_or_404, redirect
-from .models import Subject, Standard, AcademicYear, Division
 from .forms import *
 from django.views import generic
 from django.http import HttpResponseRedirect
-from django.views.generic.edit import CreateView
+from django.contrib import messages
+
 # Create your views here.
 
 class SubjectListView(generic.ListView):
@@ -22,6 +22,7 @@ class SubjectAddForm(generic.FormView):
 
     def form_valid(self, form):
         form.save()
+        messages.success(self.request,'successfully inserted')
         return HttpResponseRedirect('subjects')
 
 # def subject_edit(request, id):
@@ -113,3 +114,26 @@ def delete_grade(request, id):
     obj = get_object_or_404(Grade, pk=id)
     obj.delete()
     return HttpResponseRedirect('/academics/grades')
+
+class AcademicYearListView(generic.ListView):
+    model = AcademicYear
+    template_name = 'academic_settings/academicyear_list.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return  context
+
+class AcademicYearAddForm(generic.FormView):
+    model = AcademicYear
+    template_name = 'academic_settings/academicyear_add.html'
+    form_class = AcademicYearForm
+
+    def form_valid(self, form):
+        form.save()
+        return HttpResponseRedirect('acyear')
+
+def delete_acyear(request, id):
+    obj = get_object_or_404(AcademicYear, pk=id)
+    obj.delete()
+    return HttpResponseRedirect('/academics/acyear')
+

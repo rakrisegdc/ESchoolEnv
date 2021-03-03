@@ -43,7 +43,7 @@ class AssetManagementDetails(models.Model):
 
     def __str__(self):
         return "%s %s %s %s %s" % (
-            self.assetmanagementin, self.asset, self.assetdet_qty, self.assetdet_unitrate,self.assetdet_unit)
+            self.assetmanagementin, self.asset, self.assetdet_qty, self.assetdet_unitrate, self.assetdet_unit)
 
 
 class AssetManagementOut(models.Model):

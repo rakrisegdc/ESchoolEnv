@@ -19,4 +19,8 @@ urlpatterns = [
     path('grades', views.GradeListView.as_view(), name='grades-list'),
     path('addgrade', views.GradeAddForm.as_view(), name='add-grade'),
     path('deletegrade/<int:id>/', views.delete_grade, name='delete-grade'),
+
+    path('acyear', views.AcademicYearListView.as_view(), name='acyear-list'),
+    path('addacyear', views.AcademicYearAddForm.as_view(), name='add-acyear'),
+    path('deleteacyear/<int:id>/', views.delete_acyear, name='delete-acyear'),
 ]
