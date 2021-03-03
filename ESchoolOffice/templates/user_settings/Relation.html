@@ -1,19 +1,11 @@
-<!DOCTYPE html>
+{% extends 'layout/base_template.html' %}
+{% block title %} Relation {% endblock title %}
 
-<html lang="">
-
-<head>
-<title>Relation</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="CSS/style.css" rel="stylesheet" type="text/css" media="all">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-</head>
-<body id="top">
+{% block body_data %}
 <form method="post">
  {% csrf_token %}
 <div class="container">
-  <h2>Relation</h2>
+  <h2 class="header-list">Relation</h2>
 
   <div class="row">
    <div class="col-md-12">
@@ -24,7 +16,7 @@
                 </div>
                 <div class="card-body">
 
-                    <div class="row card-body2">
+                    <div class="row">
 
                         <div class="col-md-1">
                         </div>
@@ -32,23 +24,23 @@
                         <div class="col-md-3 text-right">
                            Relation Name:
                         </div>
-                        <div class="col-md-6 bg-warning">
+                        <div class="col-md-6">
                             {{ form.relation_name }}
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4 card-body2">
+                        <div class="col-md-4">
                         </div>
                         <div class="col-md-4">
 
-                        <button class="btn btn-primary btn-btn">
+                        <button class="btn btn-primary btn-reset">
                             Reset
                         </button>
                         </div>
 
                         <div class="col-md-4">
-                        <button class="btn btn-success btn-btn">
+                        <button class="btn btn-success btn-save">
                             Save
                         </button>
                         </div>
@@ -66,7 +58,7 @@
 </div>
        <div class="container">
     <div>
-        <table border="1">
+        <table class="table table-bordered table-info table-striped">
             <tr>
                 <th>Sl No</th>
                 <th>Relation Name</th>
@@ -85,6 +77,4 @@
     </div>
     </div>
 </form>
-
-</body>
-</html>
+{% endblock body_data %}
