@@ -84,7 +84,7 @@ class CommitteeRegistrationUpdate(generic.UpdateView):
 # endregion
 
 
-# region PTACommittee
+# region PTA
 class PTACommitteeList(generic.ListView):
     template_name = 'pta\PTACommiteeIndex.html'
 
@@ -117,4 +117,41 @@ class PTACommitteeUpdate(generic.UpdateView):
     model = PTACommittee
     fields = ['comm_date', 'committeeregistration', 'comm_agenda', 'comm_decision']
     template_name = 'pta/PTACommitteeUpdate.html'
+# endregion
+
+
+class PTADesignationList(generic.ListView):
+    template_name = 'pta\PTADesignationIndex.html'
+
+    def get_queryset(self):
+        return PTADesignation.objects.all()
+
+
+class PTADesignationForm(generic.FormView):
+    model = PTADesignation
+    template_name = 'pta\PTADesignation.html'
+    form_class = PTADesignationForm
+
+    def form_valid(self, form):
+        form.save()
+        return HttpResponse("Saved")
+
+
+class PTADesignationView(generic.DetailView):
+    model = PTADesignation
+    template_name = 'pta/PTADesignationView.html'
+
+
+class PTADesignationDelete(generic.DeleteView):
+    model = PTADesignation
+    template_name = 'pta/PTDesignationDelete.html'
+    success_url = reverse_lazy('pta:des_index')
+
+
+class PTADesignationUpdate(generic.UpdateView):
+    model = PTADesignation
+    fields = ['pta_designation_name']
+    template_name = 'pta/PTADesignationUpdate.html'
+
+
 # endregion
