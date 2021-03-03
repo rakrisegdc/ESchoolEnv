@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'school_edit/(?P<pk>\d+)/$', school_edit, name='school_edit'),
     url(r'school_view/<int:pk>/', views.SchoolProfileView.as_view(), name='school_view'),
     url(r'school_update/<int:pk>/', views.SchoolProfileupdate.as_view(), name='school_update'),
+
 ]

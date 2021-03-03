@@ -30,11 +30,15 @@ def schoolprofile(request):
 # delete
 
 
-def school_delete(request, pk):
-    post = get_object_or_404(SchoolProfile, pk=pk)
-    post.delete()
-    return redirect('static_settings:SchoolProfileForms')
+# def school_delete(request, pk):
+#     post = get_object_or_404(SchoolProfile, pk=pk)
+#     post.delete()
+#     return redirect('static_settings:SchoolProfileForms')
 
+class School_Delete(generic.DeleteView):
+    model = SchoolProfile
+    template_name = 'static_settings/SchoolProfiledelete.html'
+    success_url = reverse_lazy('static_settings:des_index')
 
 # edit
 
@@ -69,3 +73,4 @@ class SchoolProfileupdate(generic.UpdateView):
     model = SchoolProfile
     fields = ['profile_name', 'profile_address', 'profile_contactno', 'profile_email']
     template_name = 'static_settings/SchoolProfileupdate.html'
+
