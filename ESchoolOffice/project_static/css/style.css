@@ -2090,7 +2090,7 @@ header .form-inline {
 
 /* Footer */
 footer.site-footer {
-  padding: 0 1.875em; }
+   }
   footer.site-footer .footer-inner {
     color: #78909c;
     font-family: 'Open Sans';
@@ -2504,3 +2504,30 @@ footer.site-footer {
     right: 20px !important; }
 
 /*# sourceMappingURL=style.css.map */
+
+
+.btn-save
+{
+margin: 20px 0px 20px 0px;
+}
+.btn-reset
+{
+margin: 20px 0px 20px 0px;
+}
+
+.header-list
+{
+text-align:center;
+margin-bottom: 10px;
+}
+
+table tr, th
+{
+
+border-collapse: collapse;
+}
+
+.content
+{
+height:650px;
+}

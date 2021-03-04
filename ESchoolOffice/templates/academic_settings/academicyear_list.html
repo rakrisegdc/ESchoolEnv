@@ -1,0 +1,37 @@
+{% extends 'layout/base_template.html' %}
+{% block title %} Academic Years {% endblock title %}
+
+{% block body_data %}
+
+<h1>Academic Years</h1>
+<a href="{% url 'add-acyear' %}">Add</a>
+<table class="table table-primary">
+    <thead>
+        <th>Slno</th>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </thead>
+    <tbody>
+    {% for acyear in object_list %}
+        <tr>
+            <td></td>
+            <td>{{ acyear.acyear_year }}</td>
+            <td>{{ acyear.acyear_startdate }}</td>
+            <td>{{ acyear.acyear_enddate }}</td>
+            <td><a href="editacyear/{{ acyear.id }}/">Edit</a></td>
+            <td><a href="deleteacyear/{{ acyear.id }}/">Delete</a>
+            </td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="4">No Academic Year Found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock body_data %}
+
